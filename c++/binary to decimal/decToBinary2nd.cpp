@@ -9,8 +9,8 @@ int main()
     while (n != 0)
     {
         int digit = n & 1;
-        n = n >> 1;
-        ans = ans + (pow(10, i) * digit);
+        n >>= 1;
+        ans += (pow(10, i) * digit);
         i++;
     }
     cout << "The binary is:" << ans;
