@@ -13,6 +13,15 @@ int main()
 {
     int num;
     cin >> num;
-    bool ans = isEven(num);
-    cout << ans;
+
+    if (isEven(num))
+    {
+        cout << endl
+             << "The number is Even!!!";
+    }
+    else
+    {
+        cout << endl
+             << "The number is odd!!";
+    }
 }
