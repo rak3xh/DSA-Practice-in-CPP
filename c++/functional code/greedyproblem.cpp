@@ -6,7 +6,7 @@ int main()
     int amount;
     cout << "enter the total amount:";
     cin >> amount;
-    int Rs100, Rs50, Rs20, Rs1;
+    int Rs100, Rs50, Rs20, Rs10, Rs1;
     switch (1)
     {
     case 1:
@@ -31,6 +31,13 @@ int main()
              << "No. of 20 rupees note is: " << Rs20;
     }
     case 4:
+    {
+        Rs10 = amount / 10;
+        amount %= 10;
+        cout << endl
+             << "No. of 10 rupees note is: " << Rs10;
+    }
+    case 5:
     {
         Rs1 = amount / 1;
         amount %= 1;
