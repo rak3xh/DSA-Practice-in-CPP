@@ -1,6 +1,7 @@
 #include <iostream>
+#include <conio.h>
 using namespace std;
-int main()
+void main()
 {
     int amount;
     cout << "enter the total amount:";
@@ -40,5 +41,5 @@ int main()
         cout << endl
              << "The above denomination is best!!!";
     }
-    return 0;
+    getch();
 }
