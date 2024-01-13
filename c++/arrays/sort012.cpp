@@ -8,42 +8,47 @@ void print(int a[], int n)
     }
     cout << endl;
 }
-void sort(int a[], int n)
+void sort(int arr[], int n) // dutch national flag algorithm
 {
-    int i = 0, j = n - 1;
-    int step = 0;
-    while (i < j)
+    int low = 0;
+
+    int high = n - 1;
+
+    int mid = 0;
+
+    while (mid <= high)
     {
-        cout << "After Step " << step++ << endl;
-        print(a, n);
-        while (a[i] == 0 && i < j)
+
+        switch (arr[mid])
         {
-            i++;
-        }
-        while (a[j] == 2 && i < j)
-        {
-            j--;
-        }
-        while (a[i] < a[j] && i < j)
-        {
-            i++;
-            j--;
-        }
-        if (a[i] > a[j] && i < j)
-        {
-            swap(a[i], a[j]);
-            i++;
-        }
-        else if (a[i] == a[j] && i < j)
-        {
-            if (a[i + 1] == 2 && i < j)
-            {
-                swap(a[i + 1], a[j]);
-                j--;
-            }
+
+        case 0:
+
+            swap(arr[low], arr[mid]);
+
+            low++;
+
+            mid++;
+
+            break;
+
+        case 1:
+
+            mid++;
+
+            break;
+
+        case 2:
+
+            swap(arr[mid], arr[high]);
+
+            high--;
+
+            break;
         }
     }
 }
+
 int main()
 {
     int a[6] = {2, 1, 2, 0, 1, 0};
