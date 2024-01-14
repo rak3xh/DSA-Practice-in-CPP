@@ -51,8 +51,14 @@ void sort(int arr[], int n) // dutch national flag algorithm
 
 int main()
 {
-    int a[6] = {2, 1, 2, 0, 1, 0};
-    sort(a, 6);
+    int a[50], n;
+    cin >> n;
+    cout << "\n The must contain integers <0,1,2>";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    sort(a, n);
     cout << "\nReturning to main !!" << endl;
-    print(a, 6);
+    print(a, n);
 }
