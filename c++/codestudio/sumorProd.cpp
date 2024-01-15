@@ -18,7 +18,7 @@ long long int sumOrProduct(long long int n, long long int q)
 }
 int main()
 {
-    long long int n = 32, q = 2;
+    long long int n = 31, q = 2;
     long long int ans = sumOrProduct(n, q);
     std::cout << ans;
 }
