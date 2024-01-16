@@ -15,8 +15,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/'2code ka kaam'/react-js-apps/c-cplusplus-programs-mine/c++",
-      "program": "d:/'2code ka kaam'/react-js-apps/c-cplusplus-programs-mine/c++/build/Debug/outDebug",
+      "cwd": "d:/'2code ka kaam'/react-js-apps/c-cplusplus-programs-mine/c++/arrays",
+      "program": "d:/'2code ka kaam'/react-js-apps/c-cplusplus-programs-mine/c++/arrays/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
