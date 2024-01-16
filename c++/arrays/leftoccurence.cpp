@@ -3,6 +3,7 @@ using namespace std;
 
 int occur(int a[], int n, int k)
 {
+
     int s = 0;
     int e = n - 1;
     int mid = s + (e - s) / 2;
