@@ -26,7 +26,7 @@ public:
 } obj;
 int main()
 {
-    vector<int> a{3, 4, 5, 1};
+    vector<int> a{18, 29, 38, 59, 98, 100, 99, 98, 90};
     int peak = obj.peakIndexInMountainArray(a);
-    cout << a[peak];
+    cout << peak;
 }
