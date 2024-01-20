@@ -27,5 +27,5 @@ int main()
         cin >> a[i];
     }
     int pivot = pivotfind(a, n);
-    cout << "The pivot Element is :" << a[pivot];
+    cout << "The pivot Element Index is :" << pivot;
 }
