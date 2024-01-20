@@ -6,7 +6,7 @@ int pivotfind(int a[], int n)
     int mid = s + (e - s) / 2;
     while (s < e)
     {
-        if (a[mid] < a[mid + 1])
+        if (a[mid] >= a[0])
         {
             s = mid + 1;
         }
