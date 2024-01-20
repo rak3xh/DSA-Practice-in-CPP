@@ -65,4 +65,12 @@ public:
             return binarySearch(nums, 0, pivot - 1, target);
         }
     }
-};
+} obj;
+int main()
+{
+    vector<int> a{4, 5, 6, 7, 0, 1, 2};
+    int k;
+    cin >> k;
+    int index = obj.search(a, k);
+    cout << index;
+}
