@@ -31,4 +31,9 @@ int main()
     int k;
     cin >> k;
     reverse(a, n, k);
+    cout << "The final rotated array is :" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
 }
