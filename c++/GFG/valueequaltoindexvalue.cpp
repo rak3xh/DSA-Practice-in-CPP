@@ -18,4 +18,18 @@ public:
         }
         return ans;
     }
-};
+} obj;
+int main()
+{
+    int n, a[50];
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    vector<int> ans = obj.valueEqualToIndex(a, n);
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << " ";
+    }
+}
