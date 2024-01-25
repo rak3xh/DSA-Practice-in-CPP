@@ -34,3 +34,13 @@ vector<int> termsOfAP(int x)
 
     return ans;
 }
+int main()
+{
+    int x;
+    cin >> x;
+    vector<int> ans = termsOfAP(x);
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i] << " ";
+    }
+}
