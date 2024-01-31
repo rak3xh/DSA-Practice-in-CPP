@@ -25,6 +25,10 @@ bool PossibleSolution(vector<int> &books, int n, int b, int mid)
 }
 int AllocateBooks(vector<int> &books, int n, int b)
 {
+    if (b > n)
+    {
+        return -1;
+    }
     int s = 0;
     int sum = 0;
     for (int i = 0; i < n; i++)
