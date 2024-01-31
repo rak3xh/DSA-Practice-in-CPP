@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 long long int sqrt(int n)
 {
     int s = 0, e = n;
