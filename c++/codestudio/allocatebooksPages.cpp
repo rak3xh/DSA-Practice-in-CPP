@@ -7,7 +7,7 @@ bool PossibleSolution(vector<int> &pages, int n, int m, int mid)
     int totalPages = 0;
     for (int i = 0; i < n; i++)
     {
-        if (totalPages + pages[i] < mid)
+        if (totalPages + pages[i] <= mid)
         {
             totalPages += pages[i];
         }
@@ -39,11 +39,11 @@ int AllocatePages(vector<int> &pages, int n, int m)
         if (PossibleSolution(pages, n, m, mid))
         {
             ans = mid;
-            s = mid + 1;
+            e = mid - 1;
         }
         else
         {
-            e = mid - 1;
+            s = mid + 1;
         }
         mid = s + (e - s) / 2;
     }
