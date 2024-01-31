@@ -7,7 +7,7 @@ bool PossibleSolution(vector<int> &books, int n, int b, int mid)
     int totalPages = 0;
     for (int i = 0; i < n; i++)
     {
-        if (totalPages + books[i] < mid)
+        if (totalPages + books[i] <= mid)
         {
             totalPages += books[i];
         }
