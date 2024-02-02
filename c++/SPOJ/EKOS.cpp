@@ -10,12 +10,11 @@ bool PossibleSolution(vector<long long int> &trees, long long int m, long long i
         {
             Sum += trees[i] - mid;
         }
-       
     }
-     if (Sum >= m)
-        {
-            return true;
-        }
+    if (Sum >= m)
+    {
+        return true;
+    }
     return false;
 }
 long long int MaximumHeight(vector<long long int> &trees, long long int m)
@@ -29,7 +28,7 @@ long long int MaximumHeight(vector<long long int> &trees, long long int m)
         if (PossibleSolution(trees, m, mid))
         {
             ans = mid;
-            start - mid + 1;
+            start = mid + 1;
         }
         else
         {
