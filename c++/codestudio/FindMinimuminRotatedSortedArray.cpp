@@ -1,28 +1,22 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-#include <vector>
-#include <algorithm>
 int findMin(vector<int> &arr)
 {
     // Write your code here.
-    int low = 0, high = arr.size() - 1;
-
-    while (low < high)
+    int s = 0;
+    int e = arr.size() - 1;
+    int mid = s + (e - s) / 2;
+    while (s < e)
     {
-        int mid = low + (high - low) / 2;
-
-        // If the mid element is greater than the last element, search in the right half
-        if (arr[mid] > arr[high])
+        if (arr[mid] > arr[e])
         {
-            low = mid + 1;
+            s = mid + 1;
         }
-        // If the mid element is less than or equal to the last element, search in the left half
         else
         {
-            high = mid;
+            e = mid;
         }
+        mid = s + (e - s) / 2;
     }
-
-    // The minimum element will be at the 'low' index
-    return arr[low];
+    return arr[s];
 }
