@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
 
 class UnionFind
 {
@@ -63,7 +64,6 @@ public:
 
         for (const vector<int> &m : meetings)
             timeToPairs[m[2]].push_back({m[0], m[1]});
-        /*
             for (const auto& [_, pairs] : timeToPairs) {
               unordered_set<int> peopleUnioned;
               for (const auto& [x, y] : pairs) {
@@ -75,7 +75,6 @@ public:
                 if (!uf.connected(person, 0))
                   uf.reset(person);
             }
-        */
 
         for (int i = 0; i < n; ++i)
             if (uf.connected(i, 0))
@@ -84,3 +83,4 @@ public:
         return ans;
     }
 };
+        */
