@@ -13,28 +13,21 @@ public:
     int peakElement(int arr[], int n)
     {
         // Your code here
-        int start = 0, end = n - 1;
-        while (start <= end)
+        int s = 0, e = n - 1;
+        int mid = s + (e - s) / 2;
+        while (s < e)
         {
-            int mid = (start + end) / 2;
-            if (arr[mid] >= arr[mid - 1] and arr[mid] >= arr[mid + 1] and mid > 0 and mid < n - 1)
+            if (arr[mid] < arr[mid + 1])
             {
-                return mid;
-            }
-            if (arr[mid] >= arr[mid - 1] and mid == n - 1)
-                return mid;
-            if (arr[mid] >= arr[mid + 1] and mid == 0)
-                return mid;
-            else if (arr[mid + 1] > arr[mid] and mid < n - 1)
-            {
-                start = mid + 1;
+                s = mid + 1;
             }
             else
             {
-                end = mid - 1;
+                e = mid;
             }
+            mid = s + (e - s) / 2;
         }
-        return -1;
+        return s;
     }
 };
 
