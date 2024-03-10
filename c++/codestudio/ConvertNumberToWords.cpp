@@ -62,3 +62,10 @@ string handleAll(int n)
 
     return ans;
 }
+int main()
+{
+    int n;
+    cin >> n;
+    string ans = handleAll(n);
+    cout << ans;
+}
