@@ -1,40 +1,41 @@
-/*
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main(){
+int main()
+{
     int n;
-    cout<<"Enter the number of rows: ";
-    cin>>n;
-   int i=0;
-    for( i=0;i<n;i++){
-        for(int j=n-1;j>i;j--){ //space
-            cout<<" ";
+    cout << "Enter the number of rows: ";
+    cin >> n;
+    int i = 0;
+    for (i = 0; i < n; i++)
+    {
+        for (int j = n - 1; j > i; j--)
+        { // space
+            cout << " ";
         }
-            char ch='A';
+        char ch = 'A';
 
-        for (int k=0;k<=i;k++) {   //first triangle
-                cout<<ch;
-                ch++;
+        for (int k = 0; k <= i; k++)
+        { // first triangle
+            cout << ch;
+            ch++;
         }
-        
-         
-         for (char cha = 'A' + i; cha >= 'A'; --cha) {
+
+        for (char cha = 'A' + i - 1; cha >= 'A'; --cha)
+        {
             cout << cha;
-        
         }
 
-        cout<<endl; 
+        cout << endl;
     }
-    
 }
 
-*/
+/*
 #include <iostream>
 using namespace std;
 int main() {
     int n ; // Number of lines in the pattern
     cin>>n;
-    
+
     // Loop for each line
     for (int i = 0; i < n; ++i) {
         // Print leading spaces
@@ -55,3 +56,5 @@ int main() {
 
     return 0;
 }
+
+*/
