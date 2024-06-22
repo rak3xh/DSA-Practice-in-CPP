@@ -77,5 +77,5 @@ int main()
         cout << ob.ExtractNumber(s) << "\n";
     }
 
-    return  0;
+    return 0;
 }
