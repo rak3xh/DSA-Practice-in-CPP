@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 #define MAX_HEIGHT 100000
@@ -8,13 +9,18 @@ struct Node
     int data;
     Node *left;
     Node *right;
-
-    Node(int val)
-    {
-        data = val;
-        left = right = NULL;
-    }
 };
+
+// Utility function to create a new Tree Node
+Node *newNode(int val)
+{
+    Node *temp = new Node;
+    temp->data = val;
+    temp->left = NULL;
+    temp->right = NULL;
+
+    return temp;
+}
 
 // Function to Build Tree
 Node *buildTree(string str)
@@ -31,8 +37,8 @@ Node *buildTree(string str)
     for (string str; iss >> str;)
         ip.push_back(str);
 
-    // Create the root of the tree.....
-    Node *root = new Node(stoi(ip[0]));
+    // Create the root of the tree
+    Node *root = newNode(stoi(ip[0]));
 
     // Push the root to the queue
     queue<Node *> queue;
@@ -55,7 +61,7 @@ Node *buildTree(string str)
         {
 
             // Create the left child for the current node
-            currNode->left = new Node(stoi(currVal));
+            currNode->left = newNode(stoi(currVal));
 
             // Push it to the queue
             queue.push(currNode->left);
@@ -72,7 +78,7 @@ Node *buildTree(string str)
         {
 
             // Create the right child for the current node
-            currNode->right = new Node(stoi(currVal));
+            currNode->right = newNode(stoi(currVal));
 
             // Push it to the queue
             queue.push(currNode->right);
@@ -84,7 +90,8 @@ Node *buildTree(string str)
 }
 
 // } Driver Code Ends
-/*
+/* Tree node structure  used in the program
+
 struct Node {
     int data;
     Node *left;
@@ -94,56 +101,66 @@ struct Node {
         data = val;
         left = right = NULL;
     }
-};
-*/
+};*/
+
 class Solution
 {
 public:
-    // Function to return a list of integers denoting the node
-    // values of both the BST in a sorted order.
-    void inorder(Node *root, vector<int> &v)
+    /*You are required to complete this method */
+    // Return the size of the largest sub-tree which is also a BST
+    int res = 1;
+    vector<int> rec(Node *root)
     {
-        if (root == NULL)
-            return;
-        inorder(root->left, v);
-        v.push_back(root->data);
-        inorder(root->right, v);
+        vector<int> l = {1, 0, INT_MIN, INT_MAX}, r = {1, 0, INT_MIN, INT_MAX};
+        if (root->left)
+            l = rec(root->left);
+        if (root->right)
+            r = rec(root->right);
+        if (l[0] != -1 && r[0] != -1 && l[2] < root->data && r[3] > root->data)
+        {
+            res = max(res, l[1] + r[1] + 1);
+            if (l[2] == INT_MIN && l[3] == INT_MAX)
+            {
+                l[2] = root->data;
+                l[3] = root->data;
+            }
+            if (r[2] == INT_MIN && r[3] == INT_MAX)
+            {
+                r[2] = root->data;
+                r[3] = root->data;
+            }
+            return {1, l[1] + r[1] + 1, max({root->data, l[2], l[3], r[2], r[3]}),
+                    min({root->data, l[2], l[3], r[2], r[3]})};
+        }
+        else
+            return {-1, l[1] + r[1] + 1, max({root->data, l[2], l[3], r[2], r[3]}),
+                    min({root->data, l[2], l[3], r[2], r[3]})};
     }
-    vector<int> merge(Node *root1, Node *root2)
+    int largestBst(Node *root)
     {
         // Your code here
-        vector<int> v;
-        inorder(root1, v);
-        inorder(root2, v);
-        sort(begin(v), end(v));
-        return v;
+        rec(root);
+        return res;
     }
 };
 
 //{ Driver Code Starts.
+
+/* Driver program to test size function*/
+
 int main()
 {
 
     int t;
-    string tc;
-    getline(cin, tc);
-    t = stoi(tc);
+    scanf("%d ", &t);
     while (t--)
     {
-        string s;
+        string s, ch;
         getline(cin, s);
-        Node *root1 = buildTree(s);
 
-        getline(cin, s);
-        Node *root2 = buildTree(s);
-
-        // getline(cin, s);
-        Solution obj;
-        vector<int> vec = obj.merge(root1, root2);
-        for (int i = 0; i < vec.size(); i++)
-            cout << vec[i] << " ";
-        cout << endl;
-        /// cout<<"~"<<endl;
+        Node *root = buildTree(s);
+        Solution ob;
+        cout << ob.largestBst(root) << endl;
     }
     return 0;
 }
