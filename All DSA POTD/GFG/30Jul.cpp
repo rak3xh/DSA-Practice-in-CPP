@@ -7,6 +7,7 @@ using namespace std;
 
 class Solution
 {
+    
 public:
     void travel(vector<vector<int>> &mat, vector<string> &ans, int n, int i, int j, string curr)
     {
