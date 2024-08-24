@@ -19,7 +19,7 @@ This repository contains solutions to the Problem of the Day (POTD) from Leetcod
 ## Features
 
 - Daily updated solutions to Leetcode and GFG POTD in `All DSA POTD`.
-- Comprehensive examples and explanations of various DSA concepts.
+- Comprehensive examples and explanations of various DSA concepts in `DSA Resources` folder.
 - Well-structured and commented C++ code for better understanding.
 - Suitable for beginners and advanced learners alike.
 
