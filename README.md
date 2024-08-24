@@ -4,13 +4,13 @@ Welcome to the repository for **All DSA POTD of Leetcode and GFG in C++**, along
 
 ## Table of Contents
 
-- Introduction
-- Features
-- Installation
-- Usage
-- Contributing
-- License
-- Contact
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Introduction
 
