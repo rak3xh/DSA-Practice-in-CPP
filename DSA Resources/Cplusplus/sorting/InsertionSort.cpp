@@ -1,21 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-void SelectionSort(int a[], int n)
+void insertionSort(int a[], int n)
 {
-    for (int i = 1; i < n; i++)
+    int i = 1;
+    while (i < n)
     {
         int temp = a[i];
         int j = i - 1;
-        for (; j >= 0; j--)
+        while (j >= 0)
         {
             if (a[j] > temp)
             {
                 a[j + 1] = a[j];
             }
             else
+            {
                 break;
+            }
+            j--;
         }
         a[j + 1] = temp;
+        i++;
     }
 }
 int main()
@@ -26,7 +31,7 @@ int main()
     {
         cin >> a[i];
     }
-    SelectionSort(a, n);
+    insertionSort(a, n);
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << " ";
