@@ -13,6 +13,7 @@ public:
         {
             k -= chalk[i];
             if (k < 0)
+            
                 return i;
         }
 
