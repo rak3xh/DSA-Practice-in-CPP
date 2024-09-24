@@ -55,6 +55,6 @@ This project is licensed under the Apache2.0 License. See the [LICENSE](LICENSE)
 If you have any questions or suggestions, feel free to reach out.
 
 - **Email:** rakeshmondal859@gmail.com
-- **GitHub:** rak3xh
+- **GitHub:** [rak3xh](https://github.com/rak3xh)
 
 # Happy coding!
