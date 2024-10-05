@@ -1,3 +1,9 @@
+<div align="center">
+
+![Image](./images/web.jpg)
+
+</div>
+
 # DSA Practice in C++
 
 Welcome to the repository for **All DSA POTD of Leetcode and GFG in C++**, alongside with codes for learning Data Structures and Algorithms (DSA).
