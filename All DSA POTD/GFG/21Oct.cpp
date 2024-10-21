@@ -8,7 +8,7 @@ class Solution
 public:
     int countgroup(vector<int> &arr)
     {
-        // Complete the function
+        // Complete the function.
         int mod = 1e9 + 7;
         int xor_ = 0;
         int n = arr.size();
