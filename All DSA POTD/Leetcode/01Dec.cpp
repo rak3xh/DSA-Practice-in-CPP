@@ -22,20 +22,19 @@ public:
     }
 };
 */
+
 class Solution
 {
 public:
     bool checkIfExist(vector<int> &arr)
     {
         unordered_set<int> seen;
-
         for (const int a : arr)
         {
             if (seen.find(a * 2) != seen.end() || (a % 2 == 0 && seen.find(a / 2) != seen.end()))
                 return true;
             seen.insert(a);
         }
-
         return false;
     }
 };
