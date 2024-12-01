@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// C++14 Solution
 class Solution
 {
 public:
@@ -18,7 +19,7 @@ public:
         return *max_element(dp.begin(), dp.end());
     }
 };
-//C++20 Solution
+// C++20 Solution
 /*
 class Solution
 {
