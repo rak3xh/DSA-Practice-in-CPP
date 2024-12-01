@@ -22,7 +22,6 @@ public:
     }
 };
 */
-
 // C++14 Solution using find
 class Solution
 {
