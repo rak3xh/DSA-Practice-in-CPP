@@ -34,6 +34,8 @@ private:
     }
 };
 */
+
+// C++14 Solution using *max_element
 class Solution
 {
 public:
