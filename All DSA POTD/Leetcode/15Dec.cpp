@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+// C++ 20 Solution
 class Solution
 {
 public:
