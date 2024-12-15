@@ -2,6 +2,8 @@
 using namespace std;
 
 // C++ 20 Solution
+
+/*
 class Solution
 {
 public:
@@ -43,3 +45,4 @@ private:
                pass / static_cast<double>(total);
     }
 };
+*/
