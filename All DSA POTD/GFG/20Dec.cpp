@@ -21,11 +21,10 @@ public:
             turn = turn % 4;
             if (turn == 1)
             {
-                // 1 mtlb up row pr h hum log or printing krenege left or right
+
                 if (left > right)
                     break;
 
-                // right + left hmesha total columns k barabsar hoga
                 for (int temp = left; temp <= right; temp++)
                 {
                     ans.push_back(mat[up][temp]);
@@ -35,11 +34,10 @@ public:
             }
             if (turn == 2)
             {
-                // 2 mtlb right  column pr h hum log or printing kreneg up or down
 
                 if (up > down)
                     break;
-                // up + down hmesha total columns k barabsar hoga
+
                 for (int temp = up; temp <= down; temp++)
                 {
                     ans.push_back(mat[temp][right]);
@@ -49,11 +47,10 @@ public:
             }
             if (turn == 3)
             {
-                // 3 mtlb down  row pr h hum log or printing kreneg right or left
+
                 if (left > right)
                     break;
 
-                // right + left hmesha total columns k barabsar hoga
                 for (int temp = right; temp >= left; temp--)
                 {
                     ans.push_back(mat[down][temp]);
@@ -63,11 +60,10 @@ public:
             }
             if (turn == 4)
             {
-                // 4 mtlb left  colmn pr h hum log or printing kreneg down to up.
 
                 if (up > down)
                     break;
-                // up + down hmesha total columns k barabsar hoga
+
                 for (int temp = down; temp >= up; temp--)
                 {
                     ans.push_back(mat[temp][left]);
