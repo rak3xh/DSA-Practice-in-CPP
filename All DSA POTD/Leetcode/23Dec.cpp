@@ -1,5 +1,6 @@
-//C+ 20 Solution
+// C+ 20 Solution
 
+/*
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -52,3 +53,4 @@ public:
         return ans;
     }
 };
+*/
