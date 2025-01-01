@@ -8,6 +8,17 @@
 
 Welcome to the repository for **All DSA POTD of Leetcode and GFG in C++**, alongside with codes for learning Data Structures and Algorithms (DSA).
 
+## Coding Platforms
+
+<div align="center">
+
+[![LeetCode Stats](https://leetcard.jacoblin.cool/rak3xh?border=0&radius=20)](https://leetcode.com/u/rak3xh/)
+
+
+[![rak3xh's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<rak3xh>)](<https://www.geeksforgeeks.org/user/rak3xh/>)
+
+</div>
+
 ## Table of Contents
 
 - [Introduction](#introduction)
