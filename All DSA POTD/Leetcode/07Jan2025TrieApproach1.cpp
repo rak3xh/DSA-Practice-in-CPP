@@ -1,3 +1,71 @@
+// C++ 14 Solution
+
+#include <bits/stdc++.h>
+using namespace std;
+
+struct TrieNode
+{
+    vector<shared_ptr<TrieNode>> children;
+    TrieNode() : children(26, nullptr) {}
+};
+
+class Trie
+{
+public:
+    void insert(const string &word)
+    {
+        shared_ptr<TrieNode> node = root;
+        for (const char c : word)
+        {
+            const int i = c - 'a';
+            if (node->children[i] == nullptr)
+                node->children[i] = make_shared<TrieNode>();
+            node = node->children[i];
+        }
+    }
+
+    bool search(const string &word)
+    {
+        shared_ptr<TrieNode> node = root;
+        for (const char c : word)
+        {
+            const int i = c - 'a';
+            if (node->children[i] == nullptr)
+                return false;
+            node = node->children[i];
+        }
+        return true;
+    }
+
+private:
+    shared_ptr<TrieNode> root = make_shared<TrieNode>();
+};
+
+class Solution
+{
+public:
+    vector<string> stringMatching(vector<string> &words)
+    {
+        vector<string> ans;
+        Trie trie;
+
+        // Sort words by length in descending order
+        sort(words.begin(), words.end(),
+             [](const string &a, const string &b)
+             { return a.size() > b.size(); });
+
+        for (const string &word : words)
+        {
+            if (trie.search(word))
+                ans.push_back(word);
+            for (int i = 0; i < word.length(); ++i)
+                trie.insert(word.substr(i));
+        }
+
+        return ans;
+    }
+};
+
 // C++ 20 Solution
 
 /*
