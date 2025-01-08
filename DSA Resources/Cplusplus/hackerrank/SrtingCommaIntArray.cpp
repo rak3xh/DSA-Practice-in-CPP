@@ -15,9 +15,8 @@ vector<int> parseInts(string str)
         {
             input += str[i];
         }
-        ans.push_back(stoi(input));
-        return ans;
     }
+    ans.push_back(stoi(input));
 
     return ans;
 }
@@ -25,6 +24,7 @@ int main()
 {
     string str;
     getline(cin, str);
+    cout << str;
     vector<int> ans = parseInts(str);
     for (int i = 0; i < ans.size(); i++)
     {
