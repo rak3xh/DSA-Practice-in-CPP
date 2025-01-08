@@ -24,7 +24,6 @@ int main()
 {
     string str;
     getline(cin, str);
-    cout << str;
     vector<int> ans = parseInts(str);
     for (int i = 0; i < ans.size(); i++)
     {
