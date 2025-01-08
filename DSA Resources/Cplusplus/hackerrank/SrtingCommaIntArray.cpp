@@ -25,6 +25,7 @@ int main()
     string str;
     getline(cin, str);
     vector<int> ans = parseInts(str);
+    sort(ans.begin(), ans.end());
     for (int i = 0; i < ans.size(); i++)
     {
         cout << ans[i] << "\n";
