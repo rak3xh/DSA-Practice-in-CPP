@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <conio.h>
 using namespace std;
 int fib(int n, vector<int> &dp)
 {
@@ -12,7 +13,7 @@ int fib(int n, vector<int> &dp)
         return dp[n];
     }
 
-    dp[n] = fib(n - 1, dp) + fib(n + 1, dp);
+    dp[n] = fib(n - 1, dp) + fib(n - 2, dp);
 
     return dp[n];
 }
@@ -27,4 +28,5 @@ int main()
     cin >> n;
 
     cout << nthFibonacci(n);
+    getch();
 }
