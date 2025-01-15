@@ -18,7 +18,6 @@ public:
 
             if (sum == k)
             {
-
                 ansLength = max(ansLength, i + 1); // 1
             }
 
