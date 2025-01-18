@@ -46,6 +46,7 @@ private:
         dfs(grid, i + dir[0], j + dir[1], cost, q, mem);
     }
 };
+const int Solution::dirs[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
 // C++20 Solution
 
