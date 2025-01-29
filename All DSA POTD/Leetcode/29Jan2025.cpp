@@ -1,60 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-// } Driver Code Ends
-// User function Template for C++
-class Solution
+class UnionFind
 {
 public:
-    double power(double b, int e)
+    UnionFind(int n) : id(n), rank(n)
     {
-        // code here
-        if (e < 0)
-        {
-            return 1 / power(b, -e);
-        }
-        if (e == 0)
-        {
-            if (b < 0 || b > 0)
-            {
-                return 1.0;
-            }
-            else if (b == 0)
-            {
-                return 0.0;
-            }
-        }
+        iota(id.begin(), id.end(), 0);
+    }
 
-        double ans = power(b, e / 2);
-
-        if (e % 2 == 0)
+    bool unionByRank(int u, int v)
+    {
+        const int i = find(u);
+        const int j = find(v);
+        if (i == j)
+            return false;
+        if (rank[i] < rank[j])
         {
-            return ans * ans;
+            id[i] = j;
+        }
+        else if (rank[i] > rank[j])
+        {
+            id[j] = i;
         }
         else
         {
-            return b * ans * ans;
+            id[i] = j;
+            ++rank[j];
         }
+        return true;
+    }
+
+private:
+    vector<int> id;
+    vector<int> rank;
+
+    int find(int u)
+    {
+        return id[u] == u ? u : id[u] = find(id[u]);
     }
 };
-
-//{ Driver Code Starts.
-
-int main()
+class Solution
 {
-    cout << fixed << setprecision(5);
-    int t;
-    cin >> t;
-    while (t--)
+public:
+    vector<int> findRedundantConnection(vector<vector<int>> &edges)
     {
-        double b;
-        cin >> b;
-        int e;
-        cin >> e;
-        Solution ob;
-        cout << ob.power(b, e) << endl;
-        cout << "~" << endl;
-    }
+        UnionFind uf(edges.size() + 1);
 
-    return 0;
-}
+        for (const vector<int> &edge : edges)
+        {
+            const int u = edge[0];
+            const int v = edge[1];
+            if (!uf.unionByRank(u, v))
+                return edge;
+        }
+
+        throw;
+    }
+};
