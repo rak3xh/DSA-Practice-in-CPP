@@ -1,3 +1,118 @@
+// C++ 14 Solution
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class UnionFind
+{
+public:
+    UnionFind(int n) : id(n), rank(n)
+    {
+        iota(id.begin(), id.end(), 0);
+    }
+
+    void unionByRank(int u, int v)
+    {
+        int i = find(u);
+        int j = find(v);
+        if (i == j)
+            return;
+        if (rank[i] < rank[j])
+        {
+            id[i] = j;
+        }
+        else if (rank[i] > rank[j])
+        {
+            id[j] = i;
+        }
+        else
+        {
+            id[i] = j;
+            ++rank[j];
+        }
+    }
+
+    int find(int u)
+    {
+        return id[u] == u ? u : (id[u] = find(id[u]));
+    }
+
+private:
+    vector<int> id;
+    vector<int> rank;
+};
+
+class Solution
+{
+public:
+    int magnificentSets(int n, vector<vector<int>> &edges)
+    {
+        vector<vector<int>> graph(n);
+        UnionFind uf(n);
+        unordered_map<int, int> rootToGroupSize;
+
+        for (const vector<int> &edge : edges)
+        {
+            int u = edge[0] - 1;
+            int v = edge[1] - 1;
+            graph[u].push_back(v);
+            graph[v].push_back(u);
+            uf.unionByRank(u, v);
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
+            int newGroupSize = bfs(graph, i);
+            if (newGroupSize == -1)
+                return -1;
+            int root = uf.find(i);
+            rootToGroupSize[root] = max(rootToGroupSize[root], newGroupSize);
+        }
+
+        int ans = 0;
+        for (const auto &entry : rootToGroupSize)
+            ans += entry.second;
+
+        return ans;
+    }
+
+private:
+    int bfs(const vector<vector<int>> &graph, int u)
+    {
+        int step = 0;
+        queue<int> q;
+        q.push(u);
+        unordered_map<int, int> nodeToStep;
+        nodeToStep[u] = 1;
+
+        while (!q.empty())
+        {
+            ++step;
+            int sz = q.size();
+            for (int i = 0; i < sz; ++i)
+            {
+                int curr = q.front();
+                q.pop();
+                for (int v : graph[curr])
+                {
+                    if (!nodeToStep.count(v))
+                    {
+                        q.push(v);
+                        nodeToStep[v] = step + 1;
+                    }
+                    else if (nodeToStep[v] == step)
+                    {
+                        // There is an odd number of edges in the cycle.
+                        return -1;
+                    }
+                }
+            }
+        }
+
+        return step;
+    }
+};
+
 // C++ 20 Solution
 
 /*
