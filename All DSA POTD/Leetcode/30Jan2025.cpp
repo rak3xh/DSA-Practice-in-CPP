@@ -1,5 +1,6 @@
 // C++ 20 Solution
 
+/*
 class UnionFind
 {
 public:
@@ -106,3 +107,4 @@ private:
         return step;
     }
 };
+*/
