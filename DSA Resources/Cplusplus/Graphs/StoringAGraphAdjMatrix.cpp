@@ -20,6 +20,7 @@ int main()
 */
 // Storing using List
 // Space COmplexity=O(2E)
+/*
 int main()
 {
     int n, m;
@@ -31,6 +32,22 @@ int main()
         cin >> u >> v;
         adj[u].push_back(v);
         adj[v].push_back(u);
+    }
+    return 0;
+}
+*/
+// Storing a Directed Graph
+// Space Complexity=O(E)
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    vector<int> adj[n + 1];
+    for (int i = 0; i < m; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v); // There is no bidirection edge
     }
     return 0;
 }
