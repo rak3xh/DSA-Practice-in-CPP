@@ -1,9 +1,10 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     vector<int> queryResults(int limit, vector<vector<int>> &queries)
     {
         vector<int> ans;
@@ -18,7 +19,7 @@ public:
             {
                 const int prevColor = it->second;
                 if (--colorCount[prevColor] == 0)
-                    colorCount.erase(prevColor);
+                colorCount.erase(prevColor);
             }
             ballToColor[ball] = color;
             ++colorCount[color];
@@ -28,3 +29,4 @@ public:
         return ans;
     }
 };
+*/
