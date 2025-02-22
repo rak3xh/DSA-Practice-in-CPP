@@ -6,31 +6,29 @@ using namespace std;
 class Solution
 {
 public:
-    bool isBalanced(string &s)
+    int maxLength(string &s)
     {
         // code here
-        stack<char> st;
-        for (int i = 0; i < s.size(); i++)
+        int n = s.size(), ans = 0;
+        vector<int> dp(n + 1, 0);
+        stack<int> st;
+        for (int i = 0; i < n; i++)
         {
-            if (st.empty() || s[i] == '(' || s[i] == '{' || s[i] == '[')
+            if (s[i] == '(')
             {
-                st.push(s[i]);
+                st.push(i);
+                continue;
             }
-            else
-            {
-                if (s[i] == ')' && st.top() == '(')
-                    st.pop();
-                else if (s[i] == '}' && st.top() == '{')
-                    st.pop();
-                else if (s[i] == ']' && st.top() == '[')
-                    st.pop();
-                else
-                    return false;
-            }
+            if (st.empty())
+                continue;
+            int j = st.top();
+            st.pop();
+            dp[i] = i - j + 1;
+            if (j >= 1)
+                dp[i] += dp[j - 1];
+            ans = max(ans, dp[i]);
         }
-        if (st.empty())
-            return true;
-        return false;
+        return ans;
     }
 };
 
@@ -39,18 +37,17 @@ public:
 int main()
 {
     int t;
-    string a;
     cin >> t;
     while (t--)
     {
-        cin >> a;
-        Solution obj;
-        if (obj.isBalanced(a))
-            cout << "true" << endl;
-        else
-            cout << "false" << endl;
+        string S;
+        cin >> S;
+
+        Solution ob;
+        cout << ob.maxLength(S) << "\n";
 
         cout << "~"
              << "\n";
     }
+    return 0;
 }
