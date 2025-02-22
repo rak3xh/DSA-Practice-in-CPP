@@ -3,50 +3,98 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution
+// Definition for a binary tree node.
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class FindElements
 {
 public:
-    string findDifferentBinaryString(vector<string> &nums)
+    FindElements(TreeNode *root)
     {
-        const int bitSize = nums[0].length();
-        const int maxNum = 1 << bitSize;
-        unordered_set<int> numsSet;
+        dfs(root, 0);
+    }
 
-        for (const string &num : nums)
-            numsSet.insert(stoi(num, nullptr, 2));
+    bool find(int target)
+    {
+        return vals.find(target) != vals.end();
+    }
 
-        for (int num = 0; num < maxNum; ++num)
-        {
-            if (numsSet.find(num) == numsSet.end())
-                return bitset<16>(num).to_string().substr(16 - bitSize);
-        }
+private:
+    unordered_set<int> vals;
 
-        throw runtime_error("No valid binary string found");
+    void dfs(TreeNode *root, int val)
+    {
+        if (root == nullptr)
+            return;
+
+        root->val = val;
+        vals.insert(val);
+        dfs(root->left, val * 2 + 1);
+        dfs(root->right, val * 2 + 2);
     }
 };
 
-// C++ 20 Solution
-/*
+/**
+ * Your FindElements object will be instantiated and called as such:
+ * FindElements* obj = new FindElements(root);
+ * bool param_1 = obj->find(target);
+ */
 
+//  C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
-class Solution
+
+// Definition for a binary tree node.
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class FindElements
 {
     public:
-    string findDifferentBinaryString(vector<string> &nums)
+    FindElements(TreeNode *root)
     {
-        const int bitSize = nums[0].length();
-        const int maxNum = 1 << bitSize;
-        unordered_set<int> numsSet;
+        dfs(root, 0);
+    }
 
-        for (const string &num : nums)
-        numsSet.insert(stoi(num, nullptr, 2));
+    bool find(int target)
+    {
+        return vals.contains(target);
+    }
 
-        for (int num = 0; num < maxNum; ++num)
-        if (!numsSet.contains(num))
-        return std::bitset<16>(num).to_string().substr(16 - bitSize);
+    private:
+    unordered_set<int> vals;
 
-        throw;
+    void dfs(TreeNode *root, int val)
+    {
+        if (root == nullptr)
+        return;
+
+        root->val = val;
+        vals.insert(val);
+        dfs(root->left, val * 2 + 1);
+        dfs(root->right, val * 2 + 2);
     }
 };
 */
+
+/**
+ * Your FindElements object will be instantiated and called as such:
+ * FindElements* obj = new FindElements(root);
+ * bool param_1 = obj->find(target);
+ */

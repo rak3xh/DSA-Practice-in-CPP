@@ -1,5 +1,3 @@
-// C++ 14 Solution
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,87 +12,31 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-class FindElements
+class Solution
 {
 public:
-    FindElements(TreeNode *root)
+    TreeNode *recoverFromPreorder(string traversal)
     {
-        dfs(root, 0);
-    }
-
-    bool find(int target)
-    {
-        return vals.find(target) != vals.end();
+        int i = 0;
+        return recoverFromPreorder(traversal, 0, i);
     }
 
 private:
-    unordered_set<int> vals;
-
-    void dfs(TreeNode *root, int val)
+    TreeNode *recoverFromPreorder(const string &traversal, int depth, int &i)
     {
-        if (root == nullptr)
-            return;
+        int nDashes = 0;
+        while (i + nDashes < traversal.length() && traversal[i + nDashes] == '-')
+            ++nDashes;
+        if (nDashes != depth)
+            return nullptr;
 
-        root->val = val;
-        vals.insert(val);
-        dfs(root->left, val * 2 + 1);
-        dfs(root->right, val * 2 + 2);
+        i += depth;
+        const int start = i;
+        while (i < traversal.length() && isdigit(traversal[i]))
+            ++i;
+
+        return new TreeNode(stoi(traversal.substr(start, i - start)),
+                            recoverFromPreorder(traversal, depth + 1, i),
+                            recoverFromPreorder(traversal, depth + 1, i));
     }
 };
-
-/**
- * Your FindElements object will be instantiated and called as such:
- * FindElements* obj = new FindElements(root);
- * bool param_1 = obj->find(target);
- */
-
-//  C++ 20 Solution
-/*
-#include <bits/stdc++.h>
-using namespace std;
-
-// Definition for a binary tree node.
-struct TreeNode
-{
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
-class FindElements
-{
-    public:
-    FindElements(TreeNode *root)
-    {
-        dfs(root, 0);
-    }
-
-    bool find(int target)
-    {
-        return vals.contains(target);
-    }
-
-    private:
-    unordered_set<int> vals;
-
-    void dfs(TreeNode *root, int val)
-    {
-        if (root == nullptr)
-        return;
-
-        root->val = val;
-        vals.insert(val);
-        dfs(root->left, val * 2 + 1);
-        dfs(root->right, val * 2 + 2);
-    }
-};
-*/
-
-/**
- * Your FindElements object will be instantiated and called as such:
- * FindElements* obj = new FindElements(root);
- * bool param_1 = obj->find(target);
- */
