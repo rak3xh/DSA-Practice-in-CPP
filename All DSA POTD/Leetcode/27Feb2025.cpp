@@ -1,9 +1,10 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     int lenLongestFibSubseq(vector<int> &arr)
     {
         const int n = arr.size();
@@ -12,20 +13,21 @@ public:
         unordered_map<int, int> numToIndex;
 
         for (int i = 0; i < n; ++i)
-            numToIndex[arr[i]] = i;
+        numToIndex[arr[i]] = i;
 
         for (int j = 0; j < n; ++j)
-            for (int k = j + 1; k < n; ++k)
+        for (int k = j + 1; k < n; ++k)
+        {
+            const int ai = arr[k] - arr[j];
+            if (ai < arr[j] && numToIndex.contains(ai))
             {
-                const int ai = arr[k] - arr[j];
-                if (ai < arr[j] && numToIndex.contains(ai))
-                {
-                    const int i = numToIndex[ai];
-                    dp[j][k] = dp[i][j] + 1;
-                    ans = max(ans, dp[j][k]);
-                }
+                const int i = numToIndex[ai];
+                dp[j][k] = dp[i][j] + 1;
+                ans = max(ans, dp[j][k]);
             }
+        }
 
         return ans;
     }
 };
+*/
