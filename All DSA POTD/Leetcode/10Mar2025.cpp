@@ -1,20 +1,22 @@
+// C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     long long countOfSubstrings(string word, int k)
     {
         return substringsWithAtMost(word, k) - substringsWithAtMost(word, k - 1);
     }
 
-private:
+    private:
     // Return the number of substrings containing every vowel with at most k
     // consonants.
     long substringsWithAtMost(const string &word, int k)
     {
         if (k == -1)
-            return 0;
+        return 0;
 
         long res = 0;
         int vowels = 0;
@@ -27,8 +29,8 @@ private:
             {
                 ++vowels;
                 if (const auto it = vowelLastSeen.find(word[r]);
-                    it == vowelLastSeen.end() || it->second < l)
-                    ++uniqueVowels;
+                it == vowelLastSeen.end() || it->second < l)
+                ++uniqueVowels;
                 vowelLastSeen[word[r]] = r;
             }
             while (r - l + 1 - vowels > k)
@@ -37,17 +39,17 @@ private:
                 {
                     --vowels;
                     if (vowelLastSeen[word[l]] == l)
-                        --uniqueVowels;
+                    --uniqueVowels;
                 }
                 ++l;
             }
             if (uniqueVowels == 5)
-                // Add substrings containing every vowel with at most k consonants to
-                // the answer. They are
-                // word[l..r], word[l + 1..r], ..., word[min(vowelLastSeen[vowel])..r]
-                res += min({vowelLastSeen['a'], vowelLastSeen['e'], vowelLastSeen['i'],
-                            vowelLastSeen['o'], vowelLastSeen['u']}) -
-                       l + 1;
+            // Add substrings containing every vowel with at most k consonants to
+            // the answer. They are
+            // word[l..r], word[l + 1..r], ..., word[min(vowelLastSeen[vowel])..r]
+            res += min({vowelLastSeen['a'], vowelLastSeen['e'], vowelLastSeen['i'],
+            vowelLastSeen['o'], vowelLastSeen['u']}) -
+            l + 1;
         }
 
         return res;
@@ -59,3 +61,4 @@ private:
         return kVowels.find(c) != string_view::npos;
     }
 };
+*/
