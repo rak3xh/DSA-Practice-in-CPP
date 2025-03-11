@@ -14,7 +14,7 @@ public:
             ++count[c - 'a'];
             while (count[0] > 0 && count[1] > 0 && count[2] > 0)
                 --count[s[l++] - 'a'];
-            // s[0..r], s[1..r], ..., s[l - 1..r] are satified strings.
+            // s[0..r], s[1..r], ..., s[l - 1..r] are satified strings..
             ans += l;
         }
 
