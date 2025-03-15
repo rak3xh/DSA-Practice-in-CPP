@@ -1,6 +1,8 @@
+// C++ 20 SOlution
+/*
 class Solution
 {
-public:
+    public:
     int minCapability(vector<int> &nums, int k)
     {
         int l = ranges::min(nums);
@@ -10,24 +12,25 @@ public:
         {
             const int m = (l + r) / 2;
             if (numStolenHouses(nums, m) >= k)
-                r = m;
+            r = m;
             else
-                l = m + 1;
+            l = m + 1;
         }
 
         return l;
     }
 
-private:
+    private:
     int numStolenHouses(const vector<int> &nums, int capacity)
     {
         int stolenHouses = 0;
         for (int i = 0; i < nums.size(); ++i)
-            if (nums[i] <= capacity)
-            {
-                ++stolenHouses;
-                ++i;
-            }
+        if (nums[i] <= capacity)
+        {
+            ++stolenHouses;
+            ++i;
+        }
         return stolenHouses;
     }
 };
+*/
