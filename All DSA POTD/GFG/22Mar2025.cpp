@@ -1,29 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
 
 // } Driver Code Ends
 
 class Solution
 {
 public:
-    int solve(vector<int> &arr, int i, vector<int> &dp)
+    int solve(int lo, int hi, vector<int> &arr)
     {
-        if (i >= arr.size())
-            return 0;
-        if (dp[i] != -1)
-            return dp[i];
-        int take = 0, nottake = 0;
-        take = arr[i] + solve(arr, i + 2, dp);
-        nottake = solve(arr, i + 1, dp);
-        return dp[i] = max(take, nottake);
+        int prev2 = 0, prev = arr[lo], curr = 0;
+        for (int i = lo + 2; i <= hi + 1; i++)
+        {
+            curr = max(prev, arr[i - 1] + prev2);
+            prev2 = prev;
+            prev = curr;
+        }
+        return prev;
     }
-    int findMaxSum(vector<int> &arr)
+
+    int maxValue(vector<int> &arr)
     {
-        // code here
+        // your code here
         int n = arr.size();
-        vector<int> dp(n + 1, -1);
-        return solve(arr, 0, dp);
+        if (n == 0)
+            return 0;
+        if (n == 1)
+            return arr[0];
+        if (n == 2)
+            return max(arr[0], arr[1]);
+        return max(solve(0, n - 2, arr), solve(1, n - 1, arr));
     }
 };
 
@@ -31,24 +36,29 @@ public:
 
 int main()
 {
+
     int t;
     cin >> t;
     cin.ignore();
     while (t--)
     {
-        vector<int> arr;
         string input;
+        int num;
+        vector<int> arr;
+
         getline(cin, input);
-        stringstream ss(input);
-        int number;
-        while (ss >> number)
+        stringstream s2(input);
+        while (s2 >> num)
         {
-            arr.push_back(number);
+            arr.push_back(num);
         }
 
         Solution ob;
-        cout << ob.findMaxSum(arr) << endl;
-        cout << "~" << endl;
+        int res;
+        res = ob.maxValue(arr);
+        cout << res << "\n"
+             << "~" << endl;
     }
+
     return 0;
 }
