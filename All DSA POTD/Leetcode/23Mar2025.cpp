@@ -1,9 +1,10 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     int countPaths(int n, vector<vector<int>> &roads)
     {
         vector<vector<pair<int, int>>> graph(n);
@@ -20,7 +21,7 @@ public:
         return dijkstra(graph, 0, n - 1);
     }
 
-private:
+    private:
     // Similar to 1786. Number of Restricted Paths From First to Last Node
     int dijkstra(const vector<vector<pair<int, int>>> &graph, int src, int dst)
     {
@@ -39,21 +40,22 @@ private:
             const auto [d, u] = minHeap.top();
             minHeap.pop();
             if (d > dist[u])
-                continue;
+            continue;
             for (const auto &[v, w] : graph[u])
-                if (d + w < dist[v])
-                {
-                    dist[v] = d + w;
-                    ways[v] = ways[u];
-                    minHeap.emplace(dist[v], v);
-                }
-                else if (d + w == dist[v])
-                {
-                    ways[v] += ways[u];
-                    ways[v] %= kMod;
-                }
+            if (d + w < dist[v])
+            {
+                dist[v] = d + w;
+                ways[v] = ways[u];
+                minHeap.emplace(dist[v], v);
+            }
+            else if (d + w == dist[v])
+            {
+                ways[v] += ways[u];
+                ways[v] %= kMod;
+            }
         }
 
         return ways[dst];
     }
 };
+*/
