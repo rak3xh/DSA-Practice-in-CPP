@@ -26,3 +26,4 @@ public:
         return ans;
     }
 };
+// C++ 20 Solution
