@@ -1,4 +1,5 @@
 // C++ 20 Solution
+/*
 struct IndexedQuery
 {
     int queryIndex;
@@ -14,7 +15,7 @@ struct T
 
 class Solution
 {
-public:
+    public:
     vector<int> maxPoints(vector<vector<int>> &grid, vector<int> &queries)
     {
         constexpr int kDirs[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
@@ -49,9 +50,9 @@ public:
                     const int x = i + dx;
                     const int y = j + dy;
                     if (x < 0 || x == m || y < 0 || y == n)
-                        continue;
+                    continue;
                     if (seen[x][y])
-                        continue;
+                    continue;
                     minHeap.emplace(x, y, grid[x][y]);
                     seen[x][y] = true;
                 }
@@ -62,16 +63,17 @@ public:
         return ans;
     }
 
-private:
+    private:
     vector<IndexedQuery> getIndexedQueries(const vector<int> &queries)
     {
         vector<IndexedQuery> indexedQueries;
         for (int i = 0; i < queries.size(); ++i)
-            indexedQueries.push_back({i, queries[i]});
+        indexedQueries.push_back({i, queries[i]});
         ranges::sort(
             indexedQueries, ranges::less{},
             [](const IndexedQuery &indexedQuery)
             { return indexedQuery.query; });
-        return indexedQueries;
-    }
-};
+            return indexedQueries;
+        }
+    };
+    */
