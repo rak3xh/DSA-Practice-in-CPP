@@ -1,4 +1,6 @@
-// C++ 20 Solition
+// C++ 14 Solution
+
+//  C++ 20 Solition
 /*
 #include <bits/stdc++.h>
 using namespace std;
