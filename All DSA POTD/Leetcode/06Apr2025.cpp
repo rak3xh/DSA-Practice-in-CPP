@@ -17,7 +17,7 @@ public:
         int maxSize = 0; // Max size of the subset
         int index = -1;  // Track the best ending index
 
-        sort(nums.begin(), nums.end());
+        sort(nums.begin(), nums.end()); // ranges::sort(nums); // C++ 20 Solution
 
         // Fix the maximum ending number in the subset.
         for (int i = 0; i < n; ++i)
