@@ -1,3 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Solution
+{
+public:
+    int numberOfArrays(vector<int> &differences, int lower, int upper)
+    {
+        vector<long> prefix(differences.size() + 1);
+
+        for (int i = 0; i < differences.size(); ++i)
+            prefix[i + 1] += prefix[i] + differences[i];
+
+        const long mx = *max_element(prefix.begin(), prefix.end());
+        const long mn = *min_element(prefix.begin(), prefix.end());
+        return max(0L, (upper - lower) - (mx - mn) + 1);
+    }
+};
 // C++ 20 Solution
 /*
 #include <bits/stdc++.h>
