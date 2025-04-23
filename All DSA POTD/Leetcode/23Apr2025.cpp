@@ -1,18 +1,19 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     int countLargestGroup(int n)
     {
         vector<int> count(9 * 4 + 1);
         for (int i = 1; i <= n; ++i)
-            ++count[getDigitSum(i)];
+        ++count[getDigitSum(i)];
         return ranges::count(count, ranges::max(count));
     }
 
-private:
+    private:
     int getDigitSum(int num)
     {
         int digitSum = 0;
@@ -24,3 +25,4 @@ private:
         return digitSum;
     }
 };
+*/
