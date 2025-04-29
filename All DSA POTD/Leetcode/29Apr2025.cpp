@@ -1,9 +1,10 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     long long countSubarrays(vector<int> &nums, int k)
     {
         const int maxNum = ranges::max(nums);
@@ -13,13 +14,14 @@ public:
         for (int l = 0, r = 0; r < nums.size(); ++r)
         {
             if (nums[r] == maxNum)
-                ++count;
+            ++count;
             while (count == k)
-                if (nums[l++] == maxNum)
-                    --count;
+            if (nums[l++] == maxNum)
+            --count;
             ans += l;
         }
 
         return ans;
     }
 };
+*/
