@@ -1,9 +1,10 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     vector<string> getWordsInLongestSubsequence(vector<string> &words, vector<int> &groups)
     {
         vector<string> ans;
@@ -14,20 +15,20 @@ public:
         vector<int> prev(n, -1);
 
         for (int i = 1; i < n; ++i)
-            for (int j = 0; j < i; ++j)
+        for (int j = 0; j < i; ++j)
+        {
+            if (groups[i] == groups[j])
+            continue;
+            if (words[i].length() != words[j].length())
+            continue;
+            if (hammingDist(words[i], words[j]) != 1)
+            continue;
+            if (dp[i] < dp[j] + 1)
             {
-                if (groups[i] == groups[j])
-                    continue;
-                if (words[i].length() != words[j].length())
-                    continue;
-                if (hammingDist(words[i], words[j]) != 1)
-                    continue;
-                if (dp[i] < dp[j] + 1)
-                {
-                    dp[i] = dp[j] + 1;
-                    prev[i] = j;
-                }
+                dp[i] = dp[j] + 1;
+                prev[i] = j;
             }
+        }
 
         // Find the last index of the subsequence.
         int index = ranges::max_element(dp) - dp.begin();
@@ -41,13 +42,14 @@ public:
         return ans;
     }
 
-private:
+    private:
     int hammingDist(const string &s1, const string &s2)
     {
         int dist = 0;
         for (int i = 0; i < s1.length(); ++i)
-            if (s1[i] != s2[i])
-                ++dist;
+        if (s1[i] != s2[i])
+        ++dist;
         return dist;
     }
 };
+*/
