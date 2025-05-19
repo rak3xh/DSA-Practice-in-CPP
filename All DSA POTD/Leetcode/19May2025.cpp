@@ -1,18 +1,20 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     string triangleType(vector<int> &nums)
     {
         ranges::sort(nums);
         if (nums[0] + nums[1] <= nums[2])
-            return "none";
+        return "none";
         if (nums[0] == nums[1] && nums[1] == nums[2])
-            return "equilateral";
+        return "equilateral";
         if (nums[0] == nums[1] || nums[1] == nums[2])
-            return "isosceles";
+        return "isosceles";
         return "scalene";
     }
 };
+*/
