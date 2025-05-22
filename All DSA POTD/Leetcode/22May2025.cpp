@@ -1,9 +1,10 @@
 // C++ 20 SOlution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
-public:
+    public:
     int maxRemoval(vector<int> &nums, vector<vector<int>> &queries)
     {
         int queryIndex = 0;
@@ -15,13 +16,13 @@ public:
         for (int i = 0; i < nums.size(); ++i)
         {
             while (queryIndex < queries.size() && queries[queryIndex][0] <= i)
-                available.push(queries[queryIndex++][1]);
+            available.push(queries[queryIndex++][1]);
             while (!running.empty() && running.top() < i)
-                running.pop();
+            running.pop();
             while (nums[i] > running.size())
             {
                 if (available.empty() || available.top() < i)
-                    return -1;
+                return -1;
                 running.push(available.top()), available.pop();
             }
         }
@@ -29,3 +30,4 @@ public:
         return available.size();
     }
 };
+*/
