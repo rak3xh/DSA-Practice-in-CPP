@@ -1,4 +1,5 @@
 // C++ 20 Solution
+/*
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
@@ -85,6 +86,96 @@ public:
             else
             {
                 // it would be odd in tree-1, so you get (n1-even_count1) + best2
+                ans[i] = (n1 - even_count1) + best2;
+            }
+        }
+        return ans;
+    }
+};
+*/
+
+// C++14 Solution
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+    typedef pair<int, int> pii;
+
+    int bfs(int start,
+            const vector<vector<int>> &adj,
+            vector<bool> *included = nullptr)
+    {
+        queue<pii> q;
+        q.push(make_pair(start, -1));
+        int count = 0;
+        int level = 0;
+
+        while (!q.empty())
+        {
+            int size = q.size();
+            if (level % 2 == 0)
+                count += size;
+
+            for (int i = 0; i < size; ++i)
+            {
+                pii front = q.front();
+                int curr = front.first;
+                int parent = front.second;
+                q.pop();
+                if (included && level % 2 == 0)
+                {
+                    (*included)[curr] = true;
+                }
+                for (size_t j = 0; j < adj.at(curr).size(); ++j)
+                {
+                    int v = adj.at(curr)[j];
+                    if (v == parent)
+                        continue;
+                    q.push(make_pair(v, curr));
+                }
+            }
+            ++level;
+        }
+        return count;
+    }
+
+public:
+    vector<int> maxTargetNodes(vector<vector<int>> &edges1, vector<vector<int>> &edges2)
+    {
+        int n1 = edges1.size() + 1;
+        int n2 = edges2.size() + 1;
+        vector<vector<int>> adj1(n1 + 1), adj2(n2 + 1);
+
+        for (size_t i = 0; i < edges1.size(); ++i)
+        {
+            int u = edges1[i][0], v = edges1[i][1];
+            adj1[u].push_back(v);
+            adj1[v].push_back(u);
+        }
+        for (size_t i = 0; i < edges2.size(); ++i)
+        {
+            int u = edges2[i][0], v = edges2[i][1];
+            adj2[u].push_back(v);
+            adj2[v].push_back(u);
+        }
+
+        int even_count2 = bfs(0, adj2);
+        int odd_count2 = n2 - even_count2;
+        int best2 = max(even_count2, odd_count2);
+
+        vector<bool> included(n1, false);
+        int even_count1 = bfs(0, adj1, &included);
+
+        vector<int> ans(n1);
+        for (int i = 0; i < n1; ++i)
+        {
+            if (included[i])
+            {
+                ans[i] = even_count1 + best2;
+            }
+            else
+            {
                 ans[i] = (n1 - even_count1) + best2;
             }
         }
