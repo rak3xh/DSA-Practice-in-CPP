@@ -1,4 +1,63 @@
 
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    int maxDifference(string s, int k)
+    {
+        int ans = INT_MIN;
+
+        for (const pair<char, char> &p : getPermutations())
+        {
+            char a = p.first;
+            char b = p.second;
+
+            vector<vector<int>> minDiff(2, vector<int>(2, INT_MAX / 2));
+            vector<int> prefixA{0}; // prefixA[i] := the number of 'a's in s[0..i)
+            vector<int> prefixB{0}; // prefixB[i] := the number of 'b's in s[0..i)
+
+            for (int l = 0, r = 0; r < s.length(); ++r)
+            {
+                prefixA.push_back(prefixA.back() + (s[r] == a ? 1 : 0));
+                prefixB.push_back(prefixB.back() + (s[r] == b ? 1 : 0));
+
+                while (r - l + 1 >= k && prefixA[l] < prefixA.back() && prefixB[l] < prefixB.back())
+                {
+                    int pa = prefixA[l] % 2;
+                    int pb = prefixB[l] % 2;
+                    minDiff[pa][pb] = min(minDiff[pa][pb], prefixA[l] - prefixB[l]);
+                    ++l;
+                }
+
+                int pa = prefixA.back() % 2;
+                int pb = prefixB.back() % 2;
+                ans = max(ans, (prefixA.back() - prefixB.back()) - minDiff[1 - pa][pb]);
+            }
+        }
+
+        return ans;
+    }
+
+private:
+    vector<pair<char, char>> getPermutations()
+    {
+        vector<pair<char, char>> permutations;
+        string chars = "01234";
+        for (size_t i = 0; i < chars.size(); ++i)
+        {
+            for (size_t j = 0; j < chars.size(); ++j)
+            {
+                if (chars[i] != chars[j])
+                {
+                    permutations.emplace_back(chars[i], chars[j]);
+                }
+            }
+        }
+        return permutations;
+    }
+};
 
 // #include <bits/stdc++.h>
 // using namespace std;
