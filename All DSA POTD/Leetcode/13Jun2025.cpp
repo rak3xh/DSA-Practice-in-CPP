@@ -1,3 +1,4 @@
+// C++ 20 Solution
 /*
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,10 +8,10 @@ class Solution
     int minimizeMax(vector<int> &nums, int p)
     {
         ranges::sort(nums);
-        
+
         int l = 0;
         int r = nums.back() - nums.front();
-        
+
         while (l < r)
         {
             const int m = (l + r) / 2;
@@ -19,10 +20,10 @@ class Solution
             else
             l = m + 1;
         }
-        
+
         return l;
     }
-    
+
     private:
     // Returns the number of pairs that can be obtained if the difference between
     // each pair <= `maxDiff`.
