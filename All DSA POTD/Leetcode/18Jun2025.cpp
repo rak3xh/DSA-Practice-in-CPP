@@ -20,14 +20,15 @@ public:
         return ans;
     }
 };
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     vector<vector<int>> divideArray(vector<int> &nums, int k)
-//     {
-//         vector<vector<int>> ans;
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      vector<vector<int>> divideArray(vector<int> &nums, int k)
+//      {
+//          vector<vector<int>> ans;
 
 //         ranges::sort(nums);
 
