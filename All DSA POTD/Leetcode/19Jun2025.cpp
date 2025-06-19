@@ -5,7 +5,7 @@ class Solution
 public:
     int partitionArray(vector<int> &nums, int k)
     {
-        ranges::sort(nums);
+        sort(nums.begin(), nums.end());
 
         int ans = 1;
         int mn = nums[0];
