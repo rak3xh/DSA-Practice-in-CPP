@@ -52,7 +52,7 @@ private:
                 A1.push_back(-a);
             else
                 A2.push_back(a);
-        ranges::reverse(A1); // Reverse to sort ascending
+        reverse(A1.begin(), A1.end()); // Reverse to sort ascending
     }
 
     long numProductNoGreaterThan(const vector<int> &A, const vector<int> &B,
