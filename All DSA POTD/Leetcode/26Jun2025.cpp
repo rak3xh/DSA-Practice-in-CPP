@@ -20,6 +20,6 @@ public:
             pow *= 2;
         }
 
-        return ranges::count(s, '0') + oneCount;
+        return count(s.begin(), s.end(), '0') + oneCount;
     }
 };
