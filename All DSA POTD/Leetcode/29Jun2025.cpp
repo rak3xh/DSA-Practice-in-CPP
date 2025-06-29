@@ -13,7 +13,7 @@ public:
         for (int i = 1; i < n; ++i)
             pows[i] = pows[i - 1] * 2 % kMod;
 
-        ranges::sort(nums);
+        sort(nums.begin(), nums.end());
 
         for (int l = 0, r = n - 1; l <= r;)
             if (nums[l] + nums[r] <= target)
