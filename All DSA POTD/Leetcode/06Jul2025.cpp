@@ -1,43 +1,44 @@
-// C++ 20 Solution
-#include <bits/stdc++.h>
-using namespace std;
-class FindSumPairs
-{
-public:
-    FindSumPairs(vector<int> &nums1, vector<int> &nums2) : nums1(nums1), nums2(nums2)
-    {
-        for (const int num : nums2)
-            ++count2[num];
-    }
+// // C++ 20 Solution
 
-    void add(int index, int val)
-    {
-        --count2[nums2[index]];
-        nums2[index] += val;
-        ++count2[nums2[index]];
-    }
+// #include <bits/stdc++.h>
+// using namespace std;
+// class FindSumPairs
+// {
+// public:
+//     FindSumPairs(vector<int> &nums1, vector<int> &nums2) : nums1(nums1), nums2(nums2)
+//     {
+//         for (const int num : nums2)
+//             ++count2[num];
+//     }
 
-    int count(int tot)
-    {
-        int ans = 0;
-        for (const int num : nums1)
-        {
-            const int target = tot - num;
-            if (const auto it = count2.find(target); it != count2.cend())
-                ans += it->second;
-        }
-        return ans;
-    }
+//     void add(int index, int val)
+//     {
+//         --count2[nums2[index]];
+//         nums2[index] += val;
+//         ++count2[nums2[index]];
+//     }
 
-private:
-    vector<int> nums1;
-    vector<int> nums2;
-    unordered_map<int, int> count2;
-};
+//     int count(int tot)
+//     {
+//         int ans = 0;
+//         for (const int num : nums1)
+//         {
+//             const int target = tot - num;
+//             if (const auto it = count2.find(target); it != count2.cend())
+//                 ans += it->second;
+//         }
+//         return ans;
+//     }
 
-/**
- * Your FindSumPairs object will be instantiated and called as such:
- * FindSumPairs* obj = new FindSumPairs(nums1, nums2);
- * obj->add(index,val);
- * int param_2 = obj->count(tot);
- */
+// private:
+//     vector<int> nums1;
+//     vector<int> nums2;
+//     unordered_map<int, int> count2;
+// };
+
+// /**
+//  * Your FindSumPairs object will be instantiated and called as such:
+//  * FindSumPairs* obj = new FindSumPairs(nums1, nums2);
+//  * obj->add(index,val);
+//  * int param_2 = obj->count(tot);
+//  */
