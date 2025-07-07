@@ -10,7 +10,7 @@ public:
         int i = 0; // events' index
         priority_queue<int, vector<int>, greater<>> minHeap;
 
-        ranges::sort(events);
+        sort(events.begin(), events.end());
 
         while (!minHeap.empty() || i < events.size())
         {
