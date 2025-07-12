@@ -1,16 +1,17 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer)
-//     {
-//         using P = pair<int, int>;
-//         vector<vector<vector<P>>> mem(n + 1,
-//                                       vector<vector<P>>(n + 1, vector<P>(n + 1)));
-//         const auto [a, b] = solve(firstPlayer, n - secondPlayer + 1, n, mem);
-//         return {a, b};
-//     }
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      vector<int> earliestAndLatest(int n, int firstPlayer, int secondPlayer)
+//      {
+//          using P = pair<int, int>;
+//          vector<vector<vector<P>>> mem(n + 1,
+//                                        vector<vector<P>>(n + 1, vector<P>(n + 1)));
+//          const auto [a, b] = solve(firstPlayer, n - secondPlayer + 1, n, mem);
+//          return {a, b};
+//      }
 
 // private:
 //     // Returns the (earliest, latest) pair, the first player is the l-th player
