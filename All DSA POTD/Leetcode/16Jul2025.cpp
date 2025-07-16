@@ -1,11 +1,12 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     int maximumLength(vector<int> &nums)
-//     {
-//         vector<vector<int>> dp(2, vector<int>(2));
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      int maximumLength(vector<int> &nums)
+//      {
+//          vector<vector<int>> dp(2, vector<int>(2));
 
 //         // Extend the pattern xyxyxy...xy.
 //         for (const int x : nums)
