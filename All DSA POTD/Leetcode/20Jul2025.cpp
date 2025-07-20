@@ -1,18 +1,19 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// struct TrieNode
-// {
-//     unordered_map<string, shared_ptr<TrieNode>> children;
-//     bool deleted = false;
-// };
-// class Solution
-// {
-// public:
-//     vector<vector<string>> deleteDuplicateFolder(vector<vector<string>> &paths)
-//     {
-//         vector<vector<string>> ans;
-//         vector<string> path;
-//         unordered_map<string, vector<shared_ptr<TrieNode>>> subtreeToNodes;
+// C+ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  struct TrieNode
+//  {
+//      unordered_map<string, shared_ptr<TrieNode>> children;
+//      bool deleted = false;
+//  };
+//  class Solution
+//  {
+//  public:
+//      vector<vector<string>> deleteDuplicateFolder(vector<vector<string>> &paths)
+//      {
+//          vector<vector<string>> ans;
+//          vector<string> path;
+//          unordered_map<string, vector<shared_ptr<TrieNode>>> subtreeToNodes;
 
 //         ranges::sort(paths);
 
