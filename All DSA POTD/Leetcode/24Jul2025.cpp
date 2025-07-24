@@ -1,15 +1,16 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     int minimumScore(vector<int> &nums, vector<vector<int>> &edges)
-//     {
-//         const int n = nums.size();
-//         const int xors = reduce(nums.begin(), nums.end(), 0, bit_xor());
-//         vector<int> subXors(nums);
-//         vector<vector<int>> tree(n);
-//         vector<unordered_set<int>> children(n);
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      int minimumScore(vector<int> &nums, vector<vector<int>> &edges)
+//      {
+//          const int n = nums.size();
+//          const int xors = reduce(nums.begin(), nums.end(), 0, bit_xor());
+//          vector<int> subXors(nums);
+//          vector<vector<int>> tree(n);
+//          vector<unordered_set<int>> children(n);
 
 //         for (int i = 0; i < n; ++i)
 //             children[i].insert(i);
