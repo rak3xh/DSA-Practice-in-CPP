@@ -1,3 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    long long minCost(vector<int> &basket1, vector<int> &basket2)
+    {
+        vector<int> swapped;
+        unordered_map<int, int> count;
+
+        for (const int b : basket1)
+            ++count[b];
+
+        for (const int b : basket2)
+            --count[b];
+
+        for (auto it = count.begin(); it != count.end(); ++it)
+        {
+            int num = it->first;
+            int freq = it->second;
+
+            if (freq % 2 != 0)
+                return -1;
+
+            for (int i = 0; i < abs(freq) / 2; ++i)
+                swapped.push_back(num);
+        }
+
+        int minNum = min(*min_element(basket1.begin(), basket1.end()),
+                         *min_element(basket2.begin(), basket2.end()));
+
+        auto midIt = swapped.begin() + swapped.size() / 2;
+        nth_element(swapped.begin(), midIt, swapped.end());
+
+        return accumulate(swapped.begin(), midIt, 0LL, [minNum](long long acc, int num)
+                          { return acc + min(2 * minNum, num); });
+    }
+};
+
 // C++ 20 Solution
 //  #include <bits/stdc++.h>
 //  using namespace std;
