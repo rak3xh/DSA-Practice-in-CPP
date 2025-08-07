@@ -1,3 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    int maxCollectedFruits(vector<vector<int>> &fruits)
+    {
+        return getTopLeft(fruits) + getTopRight(fruits) + getBottomLeft(fruits) -
+               2 * fruits.back().back();
+    }
+
+private:
+    int getTopLeft(const vector<vector<int>> &fruits)
+    {
+        const int n = fruits.size();
+        int res = 0;
+        for (int i = 0; i < n; ++i)
+            res += fruits[i][i];
+        return res;
+    }
+
+    int getTopRight(const vector<vector<int>> &fruits)
+    {
+        const int n = fruits.size();
+        vector<vector<int>> dp(n, vector<int>(n));
+        dp[0][n - 1] = fruits[0][n - 1];
+        for (int x = 0; x < n; ++x)
+        {
+            for (int y = 0; y < n; ++y)
+            {
+                if (x >= y && !(x == n - 1 && y == n - 1))
+                    continue;
+                vector<pair<int, int>> dirs = {{1, -1}, {1, 0}, {1, 1}};
+                for (size_t k = 0; k < dirs.size(); ++k)
+                {
+                    int dx = dirs[k].first;
+                    int dy = dirs[k].second;
+                    int i = x - dx;
+                    int j = y - dy;
+                    if (i < 0 || i == n || j < 0 || j == n)
+                        continue;
+                    if (i < j && j < n - 1 - i)
+                        continue;
+                    dp[x][y] = max(dp[x][y], dp[i][j] + fruits[x][y]);
+                }
+            }
+        }
+
+        return dp[n - 1][n - 1];
+    }
+
+    int getBottomLeft(const vector<vector<int>> &fruits)
+    {
+        const int n = fruits.size();
+        vector<vector<int>> dp(n, vector<int>(n));
+        dp[n - 1][0] = fruits[n - 1][0];
+        for (int y = 0; y < n; ++y)
+        {
+            for (int x = 0; x < n; ++x)
+            {
+                if (x <= y && !(x == n - 1 && y == n - 1))
+                    continue;
+                vector<pair<int, int>> dirs = {{-1, 1}, {0, 1}, {1, 1}};
+                for (size_t k = 0; k < dirs.size(); ++k)
+                {
+                    int dx = dirs[k].first;
+                    int dy = dirs[k].second;
+                    int i = x - dx;
+                    int j = y - dy;
+                    if (i < 0 || i == n || j < 0 || j == n)
+                        continue;
+                    if (j < i && i < n - 1 - j)
+                        continue;
+                    dp[x][y] = max(dp[x][y], dp[i][j] + fruits[x][y]);
+                }
+            }
+        }
+
+        return dp[n - 1][n - 1];
+    }
+};
+
 // C++ 20 Solution
 // #include <bits/stdc++.h>
 // using namespace std;
