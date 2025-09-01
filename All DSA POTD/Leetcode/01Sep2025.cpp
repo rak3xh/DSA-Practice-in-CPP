@@ -1,11 +1,12 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     double maxAverageRatio(vector<vector<int>> &classes, int extraStudents)
-//     {
-//         priority_queue<tuple<double, int, int>> maxHeap;
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      double maxAverageRatio(vector<vector<int>> &classes, int extraStudents)
+//      {
+//          priority_queue<tuple<double, int, int>> maxHeap;
 
 //         for (const vector<int> &c : classes)
 //         {
