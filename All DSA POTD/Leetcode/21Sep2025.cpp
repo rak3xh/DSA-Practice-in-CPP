@@ -1,79 +1,80 @@
-#include <bits/stdc++.h>
-using namespace std;
-class MovieRentingSystem
-{
-public:
-    MovieRentingSystem(int n, vector<vector<int>> &entries)
-    {
-        for (const vector<int> &e : entries)
-        {
-            const int shop = e[0];
-            const int movie = e[1];
-            const int price = e[2];
-            unrented[movie].insert({price, shop});
-            shopAndMovieToPrice[{shop, movie}] = price;
-        }
-    }
 
-    vector<int> search(int movie)
-    {
-        vector<int> ans;
-        int i = 0;
+// #include <bits/stdc++.h>
+// using namespace std;
+// class MovieRentingSystem
+// {
+// public:
+//     MovieRentingSystem(int n, vector<vector<int>> &entries)
+//     {
+//         for (const vector<int> &e : entries)
+//         {
+//             const int shop = e[0];
+//             const int movie = e[1];
+//             const int price = e[2];
+//             unrented[movie].insert({price, shop});
+//             shopAndMovieToPrice[{shop, movie}] = price;
+//         }
+//     }
 
-        for (const auto &[price, shop] : unrented[movie])
-        {
-            ans.push_back(shop);
-            if (++i >= 5)
-                break;
-        }
+//     vector<int> search(int movie)
+//     {
+//         vector<int> ans;
+//         int i = 0;
 
-        return ans;
-    }
+//         for (const auto &[price, shop] : unrented[movie])
+//         {
+//             ans.push_back(shop);
+//             if (++i >= 5)
+//                 break;
+//         }
 
-    void rent(int shop, int movie)
-    {
-        const int price = shopAndMovieToPrice[{shop, movie}];
-        unrented[movie].erase({price, shop});
-        rented.insert({price, {shop, movie}});
-    }
+//         return ans;
+//     }
 
-    void drop(int shop, int movie)
-    {
-        const int price = shopAndMovieToPrice[{shop, movie}];
-        unrented[movie].insert({price, shop});
-        rented.erase({price, {shop, movie}});
-    }
+//     void rent(int shop, int movie)
+//     {
+//         const int price = shopAndMovieToPrice[{shop, movie}];
+//         unrented[movie].erase({price, shop});
+//         rented.insert({price, {shop, movie}});
+//     }
 
-    vector<vector<int>> report()
-    {
-        vector<vector<int>> ans;
-        int i = 0;
+//     void drop(int shop, int movie)
+//     {
+//         const int price = shopAndMovieToPrice[{shop, movie}];
+//         unrented[movie].insert({price, shop});
+//         rented.erase({price, {shop, movie}});
+//     }
 
-        for (const auto &[_, shopAndMovie] : rented)
-        {
-            ans.push_back({shopAndMovie.first, shopAndMovie.second});
-            if (++i >= 5)
-                break;
-        }
+//     vector<vector<int>> report()
+//     {
+//         vector<vector<int>> ans;
+//         int i = 0;
 
-        return ans;
-    }
+//         for (const auto &[_, shopAndMovie] : rented)
+//         {
+//             ans.push_back({shopAndMovie.first, shopAndMovie.second});
+//             if (++i >= 5)
+//                 break;
+//         }
 
-private:
-    struct PairHash
-    {
-        size_t operator()(const pair<int, int> &p) const
-        {
-            return p.first ^ p.second;
-        }
-    };
+//         return ans;
+//     }
 
-    // {movie: (price, shop)}
-    unordered_map<int, set<pair<int, int>>> unrented;
+// private:
+//     struct PairHash
+//     {
+//         size_t operator()(const pair<int, int> &p) const
+//         {
+//             return p.first ^ p.second;
+//         }
+//     };
 
-    // {(shop, movie): price}
-    unordered_map<pair<int, int>, int, PairHash> shopAndMovieToPrice;
+//     // {movie: (price, shop)}
+//     unordered_map<int, set<pair<int, int>>> unrented;
 
-    // (price, (shop, movie))
-    set<pair<int, pair<int, int>>> rented;
-};
+//     // {(shop, movie): price}
+//     unordered_map<pair<int, int>, int, PairHash> shopAndMovieToPrice;
+
+//     // (price, (shop, movie))
+//     set<pair<int, pair<int, int>>> rented;
+// };
