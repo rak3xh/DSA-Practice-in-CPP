@@ -1,20 +1,20 @@
-
-// #include <bits/stdc++.h>
-// using namespace std;
-// class MovieRentingSystem
-// {
-// public:
-//     MovieRentingSystem(int n, vector<vector<int>> &entries)
-//     {
-//         for (const vector<int> &e : entries)
-//         {
-//             const int shop = e[0];
-//             const int movie = e[1];
-//             const int price = e[2];
-//             unrented[movie].insert({price, shop});
-//             shopAndMovieToPrice[{shop, movie}] = price;
-//         }
-//     }
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class MovieRentingSystem
+//  {
+//  public:
+//      MovieRentingSystem(int n, vector<vector<int>> &entries)
+//      {
+//          for (const vector<int> &e : entries)
+//          {
+//              const int shop = e[0];
+//              const int movie = e[1];
+//              const int price = e[2];
+//              unrented[movie].insert({price, shop});
+//              shopAndMovieToPrice[{shop, movie}] = price;
+//          }
+//      }
 
 //     vector<int> search(int movie)
 //     {
