@@ -1,10 +1,11 @@
-// #include<bits/stdc++.h>
-// using namespace std;
-// class Solution {
-// public:
-//     int triangleNumber(vector<int>& nums) {
-//         if (nums.size() < 3)
-//       return 0;
+// C++ 20 Solution
+//  #include<bits/stdc++.h>
+//  using namespace std;
+//  class Solution {
+//  public:
+//      int triangleNumber(vector<int>& nums) {
+//          if (nums.size() < 3)
+//        return 0;
 
 //     int ans = 0;
 
