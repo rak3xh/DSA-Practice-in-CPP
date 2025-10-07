@@ -1,13 +1,14 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     vector<int> avoidFlood(vector<int> &rains)
-//     {
-//         vector<int> ans(rains.size(), -1);
-//         unordered_map<int, int> lakeIdToFullDay;
-//         set<int> emptyDays; // indices of rains[i] == 0
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      vector<int> avoidFlood(vector<int> &rains)
+//      {
+//          vector<int> ans(rains.size(), -1);
+//          unordered_map<int, int> lakeIdToFullDay;
+//          set<int> emptyDays; // indices of rains[i] == 0
 
 //         for (int i = 0; i < rains.size(); ++i)
 //         {
