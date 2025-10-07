@@ -1,3 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    vector<int> avoidFlood(vector<int> &rains)
+    {
+        vector<int> ans(rains.size(), -1);
+        unordered_map<int, int> lakeIdToFullDay;
+        set<int> emptyDays; // indices of rains[i] == 0
+
+        for (int i = 0; i < (int)rains.size(); ++i)
+        {
+            int lakeId = rains[i];
+            if (lakeId == 0)
+            {
+                emptyDays.insert(i);
+                continue;
+            }
+
+            auto itFullDay = lakeIdToFullDay.find(lakeId);
+            if (itFullDay != lakeIdToFullDay.end())
+            {
+                // The lake was full in a previous day. Greedily find the closest day
+                // to make the lake empty.
+                auto itEmptyDay = emptyDays.upper_bound(itFullDay->second);
+                if (itEmptyDay == emptyDays.end()) // Not found.
+                    return {};
+                // Empty the lake at this day.
+                ans[*itEmptyDay] = lakeId;
+                emptyDays.erase(itEmptyDay);
+            }
+
+            // The lake with `lakeId` becomes full at the day `i`.
+            lakeIdToFullDay[lakeId] = i;
+        }
+
+        // Empty an arbitrary lake if there are remaining empty days.
+        for (auto it = emptyDays.begin(); it != emptyDays.end(); ++it)
+            ans[*it] = 1;
+
+        return ans;
+    }
+};
+
 // C++ 20 Solution
 //  #include <bits/stdc++.h>
 //  using namespace std;
