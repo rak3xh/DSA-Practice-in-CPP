@@ -6,7 +6,7 @@ public:
     vector<int> successfulPairs(vector<int> &spells, vector<int> &potions, long long success)
     {
         vector<int> ans;
-        ranges::sort(potions);
+        sort(potions.begin(), potions.end());
 
         for (const int spell : spells)
             ans.push_back(potions.size() -
