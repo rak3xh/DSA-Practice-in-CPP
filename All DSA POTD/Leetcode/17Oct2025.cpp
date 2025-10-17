@@ -1,5 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+class Solution
+{
+public:
+    int maxPartitionsAfterOperations(string s, int k)
+    {
+        unordered_map<long long, int> mem;
+        return maxPartitionsAfterOperations(s, 0, true, 0, k, mem) + 1;
+    }
+
+private:
+    // Returns the maximum number of partitions of s[i..n), where `canChange` is
+    // true if we can still change a letter, and `mask` is the bitmask of the
+    // letters we've seen.
+    int maxPartitionsAfterOperations(const string &s, int i, bool canChange,
+                                     int mask, int k,
+                                     unordered_map<long long, int> &mem)
+    {
+        if (i == (int)s.length())
+            return 0;
+
+        long long key = (static_cast<long long>(i) << 27) |
+                        (static_cast<long long>(canChange ? 1LL : 0LL) << 26) |
+                        static_cast<long long>(mask);
+
+        auto it = mem.find(key);
+        if (it != mem.end())
+            return it->second;
+
+        // Initialize the result based on the current letter.
+        int res = getRes(s, i, canChange, mask, 1 << (s[i] - 'a'), k, mem);
+
+        // If allowed, explore the option to change the current letter.
+        if (canChange)
+            for (int j = 0; j < 26; ++j)
+                res = max(res, getRes(s, i, false, mask, 1 << j, k, mem));
+
+        mem[key] = res;
+        return res;
+    }
+
+    int getRes(const string &s, int i, bool nextCanChange, unsigned mask,
+               int newBit, int k, unordered_map<long long, int> &mem)
+    {
+        const unsigned newMask = mask | static_cast<unsigned>(newBit);
+        // Use builtin popcount for C++14 compatibility
+        if (__builtin_popcount(newMask) > k) // fresh start
+            return 1 + maxPartitionsAfterOperations(s, i + 1, nextCanChange, newBit,
+                                                    k, mem);
+        return maxPartitionsAfterOperations(s, i + 1, nextCanChange, newMask, k,
+                                            mem);
+    }
+};
+// C++ 20 Solution
+#include <bits/stdc++.h>
+using namespace std;
 class Solution
 {
 public:
