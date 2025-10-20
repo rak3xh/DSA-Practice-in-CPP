@@ -33,7 +33,7 @@ public:
         {
             p = gre(a, arr[i]);
             int l = p.first;
-            ac int r = p.second;
+            int r = p.second;
 
             int c = ncr(2 * l) / ((ncr(l + 1)) * (ncr(l)));
             int d = ncr(2 * r) / ((ncr(r + 1)) * (ncr(r)));
