@@ -23,8 +23,11 @@ public:
 
         for (const int num : candidates)
         {
-            adjustable += line.contains(num) ? line[num] : 0;
-            const int countNum = count.contains(num) ? count[num] : 0;
+            auto itLine = line.find(num);
+            if (itLine != line.end())
+                adjustable += itLine->second;
+            auto itCount = count.find(num);
+            const int countNum = (itCount != count.end()) ? itCount->second : 0;
             const int adjusted = adjustable - countNum;
             ans = max(ans, countNum + min(numOperations, adjusted));
         }
