@@ -1,12 +1,13 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     int numberOfBeams(vector<string> &bank)
-//     {
-//         int ans = 0;
-//         int prevOnes = 0;
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      int numberOfBeams(vector<string> &bank)
+//      {
+//          int ans = 0;
+//          int prevOnes = 0;
 
 //         for (const string &row : bank)
 //         {
