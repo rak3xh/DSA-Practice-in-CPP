@@ -23,3 +23,29 @@
 //     }
 // };
 // C++ 14 Solution
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    int numberOfBeams(vector<string> &bank)
+    {
+        int ans = 0;
+        int prevOnes = 0;
+
+        for (const string &row : bank)
+        {
+            // count number of '1's in the row (C++14 version)
+            int ones = count(row.begin(), row.end(), '1');
+
+            if (ones > 0)
+            {
+                ans += prevOnes * ones;
+                prevOnes = ones;
+            }
+        }
+
+        return ans;
+    }
+};
