@@ -1,31 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class Solution
 {
 public:
     int dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
     int minCostPath(vector<vector<int>> &mat)
     {
-        // code here
         int n = mat.size();
         int m = mat[0].size();
 
         vector<vector<int>> cost(n, vector<int>(m, INT_MAX));
         cost[0][0] = 0;
 
-        // {current cost, {x, y}}
-        priority_queue<pair<int, pair<int, int>>,
-                       vector<pair<int, pair<int, int>>>, greater<>>
+        // priority_queue<cost, {x, y}>
+        priority_queue<
+            pair<int, pair<int, int>>,
+            vector<pair<int, pair<int, int>>>,
+            greater<pair<int, pair<int, int>>>>
             pq;
+
         pq.push({0, {0, 0}});
 
         while (!pq.empty())
         {
-            auto [currCost, cell] = pq.top();
+            pair<int, pair<int, int>> top = pq.top();
             pq.pop();
-            int x = cell.first, y = cell.second;
 
-            // Skip if this is an outdated entry
+            int currCost = top.first;
+            int x = top.second.first;
+            int y = top.second.second;
+
+            // Skip outdated entry
             if (currCost != cost[x][y])
                 continue;
 
@@ -33,16 +40,16 @@ public:
             if (x == n - 1 && y == m - 1)
                 return currCost;
 
-            for (auto d : dir)
+            for (int i = 0; i < 4; i++)
             {
-                int nx = x + d[0], ny = y + d[1];
+                int nx = x + dir[i][0];
+                int ny = y + dir[i][1];
+
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m)
                 {
-
-                    // Maximum difference along this path
+                    // max diff on path
                     int newCost = max(currCost, abs(mat[nx][ny] - mat[x][y]));
 
-                    // Update if newCost improves the neighbor
                     if (newCost < cost[nx][ny])
                     {
                         cost[nx][ny] = newCost;
