@@ -3,57 +3,55 @@ using namespace std;
 class Solution
 {
 public:
+    int dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     int minCostPath(vector<vector<int>> &mat)
     {
         // code here
         int n = mat.size();
         int m = mat[0].size();
 
-        vector<vector<int>> dist(n, vector<int>(m, INT_MAX));
-        priority_queue<
-            pair<int, pair<int, int>>,
-            vector<pair<int, pair<int, int>>>,
-            greater<pair<int, pair<int, int>>>>
+        vector<vector<int>> cost(n, vector<int>(m, INT_MAX));
+        cost[0][0] = 0;
+
+        // {current cost, {x, y}}
+        priority_queue<pair<int, pair<int, int>>,
+                       vector<pair<int, pair<int, int>>>, greater<>>
             pq;
-
-        dist[0][0] = 0;
         pq.push({0, {0, 0}});
-
-        int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
         while (!pq.empty())
         {
-            auto [cost, pos] = pq.top();
+            auto [currCost, cell] = pq.top();
             pq.pop();
+            int x = cell.first, y = cell.second;
 
-            int x = pos.first;
-            int y = pos.second;
-
-            if (x == n - 1 && y == m - 1)
-                return cost; // minimal cost found
-
-            if (cost > dist[x][y])
+            // Skip if this is an outdated entry
+            if (currCost != cost[x][y])
                 continue;
 
-            for (auto &d : dirs)
+            // Destination reached
+            if (x == n - 1 && y == m - 1)
+                return currCost;
+
+            for (auto d : dir)
             {
-                int nx = x + d[0];
-                int ny = y + d[1];
-
-                if (nx >= 0 && ny >= 0 && nx < n && ny < m)
+                int nx = x + d[0], ny = y + d[1];
+                if (nx >= 0 && nx < n && ny >= 0 && ny < m)
                 {
-                    int edge = abs(mat[nx][ny] - mat[x][y]);
-                    int newCost = max(cost, edge);
 
-                    if (newCost < dist[nx][ny])
+                    // Maximum difference along this path
+                    int newCost = max(currCost, abs(mat[nx][ny] - mat[x][y]));
+
+                    // Update if newCost improves the neighbor
+                    if (newCost < cost[nx][ny])
                     {
-                        dist[nx][ny] = newCost;
+                        cost[nx][ny] = newCost;
                         pq.push({newCost, {nx, ny}});
                     }
                 }
             }
         }
 
-        return -1; // should never happen
+        return cost[n - 1][m - 1];
     }
 };
