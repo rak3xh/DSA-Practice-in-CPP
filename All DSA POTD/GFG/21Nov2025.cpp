@@ -1,3 +1,82 @@
+// C++ 14 Solution
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    int shortestPath(int V, int a, int b, vector<vector<int>> &edges)
+    {
+        // Adjacency list: vector of (v, w1, w2)
+        vector<vector<tuple<int, int, int>>> adj(V);
+        for (const auto &edge : edges)
+        {
+            int u = edge[0];
+            int v = edge[1];
+            int w1 = edge[2];
+            int w2 = edge[3];
+
+            adj[u].push_back(make_tuple(v, w1, w2));
+            adj[v].push_back(make_tuple(u, w1, w2));
+        }
+
+        const int INF = INT_MAX;
+        vector<vector<int>> dist(V, vector<int>(2, INF));
+
+        // Min-heap: (distance, node, curved_count)
+        priority_queue<tuple<int, int, int>,
+                       vector<tuple<int, int, int>>,
+                       greater<tuple<int, int, int>>>
+            pq;
+
+        dist[a][0] = 0;
+        pq.push(make_tuple(0, a, 0));
+
+        while (!pq.empty())
+        {
+            int d, u, curved_count;
+            tie(d, u, curved_count) = pq.top(); // NO structured bindings
+            pq.pop();
+
+            if (d > dist[u][curved_count])
+                continue;
+
+            for (const auto &edge : adj[u])
+            {
+                int v = get<0>(edge);
+                int w1 = get<1>(edge);
+                int w2 = get<2>(edge);
+
+                // Straight Edge (w1)
+                int new_d1 = d + w1;
+                int new_c1 = curved_count;
+
+                if (new_d1 < dist[v][new_c1])
+                {
+                    dist[v][new_c1] = new_d1;
+                    pq.push(make_tuple(new_d1, v, new_c1));
+                }
+
+                // Curved Edge (w2) - can be used only once
+                if (curved_count == 0)
+                {
+                    int new_d2 = d + w2;
+                    int new_c2 = 1;
+
+                    if (new_d2 < dist[v][new_c2])
+                    {
+                        dist[v][new_c2] = new_d2;
+                        pq.push(make_tuple(new_d2, v, new_c2));
+                    }
+                }
+            }
+        }
+
+        int result = min(dist[b][0], dist[b][1]);
+        return (result == INF) ? -1 : result;
+    }
+};
+
 // C++ 20 Solution
 //  #include <bits/stdc++.h>
 //  using namespace std;
