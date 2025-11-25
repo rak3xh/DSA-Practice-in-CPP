@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class Solution
 {
 public:
@@ -16,8 +17,11 @@ public:
             n = (n * 10 + 1) % k;
             if (n == 0)
                 return length;
-            if (seen.contains(n))
+
+            // replaced seen.contains(n) with C++14 alternative
+            if (seen.find(n) != seen.end())
                 return -1;
+
             seen.insert(n);
         }
 
