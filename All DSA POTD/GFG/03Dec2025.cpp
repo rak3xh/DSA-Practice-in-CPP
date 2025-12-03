@@ -3,7 +3,7 @@ using namespace std;
 class Solution
 {
 public:
-    int tsputil(int i, int mask, vector<vector<int>> &cost, vector<vector<int>> &dp, int &n)
+    virtual int tsputil(int i, int mask, vector<vector<int>> &cost, vector<vector<int>> &dp, int &n)
     {
         mask = mask ^ (1 << i);
         if (mask == 0)
@@ -22,7 +22,7 @@ public:
         }
         return dp[i][mask] = mini;
     }
-    int tsp(vector<vector<int>> &cost)
+    virtual int tsp(vector<vector<int>> &cost)
     {
         // code here
         int n = cost.size();
