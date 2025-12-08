@@ -15,7 +15,7 @@ public:
 
         for (const int a : squared)
             for (const int b : squared)
-                if (squared.count(a + b)) // replaced contains() with count()
+                if (squared.count(a + b))
                     ++ans;
 
         return ans;
