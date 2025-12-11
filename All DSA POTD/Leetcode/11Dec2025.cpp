@@ -1,15 +1,15 @@
-
-// #include <bits/stdc++.h>
-// using namespace std;
-// class Solution
-// {
-// public:
-//     int countCoveredBuildings(int n, vector<vector<int>> &buildings)
-//     {
-//         // Map to store all y-coordinates for each x-coordinate
-//         unordered_map<int, vector<int>> buildingsAtX;
-//         // Map to store all x-coordinates for each y-coordinate
-//         unordered_map<int, vector<int>> buildingsAtY;
+// C++ 20 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class Solution
+//  {
+//  public:
+//      int countCoveredBuildings(int n, vector<vector<int>> &buildings)
+//      {
+//          // Map to store all y-coordinates for each x-coordinate
+//          unordered_map<int, vector<int>> buildingsAtX;
+//          // Map to store all x-coordinates for each y-coordinate
+//          unordered_map<int, vector<int>> buildingsAtY;
 
 //         // Group buildings by their x and y coordinates
 //         for (const auto &building : buildings)
