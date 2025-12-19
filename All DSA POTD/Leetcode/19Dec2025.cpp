@@ -1,12 +1,13 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// class UnionFind
-// {
-// public:
-//     UnionFind(int n) : id(n), rank(n)
-//     {
-//         iota(id.begin(), id.end(), 0);
-//     }
+// C++ 17 Solution
+//  #include <bits/stdc++.h>
+//  using namespace std;
+//  class UnionFind
+//  {
+//  public:
+//      UnionFind(int n) : id(n), rank(n)
+//      {
+//          iota(id.begin(), id.end(), 0);
+//      }
 
 //     void unionByRank(int u, int v)
 //     {
