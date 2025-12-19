@@ -1,5 +1,111 @@
 // C++ 14 Solution
+#include <bits/stdc++.h>
+using namespace std;
 
+class UnionFind
+{
+public:
+    UnionFind(int n) : id(n), rank(n, 0)
+    {
+        iota(id.begin(), id.end(), 0);
+    }
+
+    void unionByRank(int u, int v)
+    {
+        int i = find(u);
+        int j = find(v);
+        if (i == j)
+            return;
+
+        if (rank[i] < rank[j])
+        {
+            id[i] = j;
+        }
+        else if (rank[i] > rank[j])
+        {
+            id[j] = i;
+        }
+        else
+        {
+            id[i] = j;
+            rank[j]++;
+        }
+    }
+
+    bool connected(int u, int v)
+    {
+        return find(u) == find(v);
+    }
+
+    void reset(int u)
+    {
+        id[u] = u;
+    }
+
+private:
+    vector<int> id;
+    vector<int> rank;
+
+    int find(int u)
+    {
+        if (id[u] == u)
+            return u;
+        return id[u] = find(id[u]);
+    }
+};
+
+class Solution
+{
+public:
+    vector<int> findAllPeople(int n, vector<vector<int>> &meetings, int firstPerson)
+    {
+        vector<int> ans;
+        UnionFind uf(n);
+
+        map<int, vector<pair<int, int>>> timeToPairs;
+
+        // Person 0 initially shares secret with firstPerson
+        uf.unionByRank(0, firstPerson);
+
+        for (const vector<int> &m : meetings)
+        {
+            timeToPairs[m[2]].push_back(make_pair(m[0], m[1]));
+        }
+
+        for (map<int, vector<pair<int, int>>>::iterator it = timeToPairs.begin();
+             it != timeToPairs.end(); ++it)
+        {
+            vector<pair<int, int>> &pairs = it->second;
+            unordered_set<int> peopleUnioned;
+
+            for (size_t i = 0; i < pairs.size(); ++i)
+            {
+                int x = pairs[i].first;
+                int y = pairs[i].second;
+                uf.unionByRank(x, y);
+                peopleUnioned.insert(x);
+                peopleUnioned.insert(y);
+            }
+
+            for (unordered_set<int>::iterator p = peopleUnioned.begin();
+                 p != peopleUnioned.end(); ++p)
+            {
+                if (!uf.connected(*p, 0))
+                {
+                    uf.reset(*p);
+                }
+            }
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (uf.connected(i, 0))
+                ans.push_back(i);
+        }
+
+        return ans;
+    }
+};
 
 // C++ 17 Solution
 //  #include <bits/stdc++.h>
