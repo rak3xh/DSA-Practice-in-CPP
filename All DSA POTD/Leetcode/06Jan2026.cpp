@@ -34,6 +34,7 @@ public:
                 if (node->right != nullptr)
                     q.push(node->right);
             }
+
             if (levelSum > maxLevelSum)
             {
                 maxLevelSum = levelSum;
