@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+struct T
+{
+    TreeNode *lca;
+    int depth;
+};
+
 // Definition for a binary tree node.
 struct TreeNode
 {
