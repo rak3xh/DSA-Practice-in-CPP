@@ -5,7 +5,7 @@ class Solution
 public:
     int catchThieves(vector<char> &arr, int k)
     {
-        // Code here
+        // Code here 
         int n = arr.size();
         int ans = 0;
         int T = 0;
