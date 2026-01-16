@@ -1,37 +1,52 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class Solution
 {
 public:
-    int maximizeSquareArea(int m, int n, vector<int> &hFences, vector<int> &vFences)
+    int maximizeSquareArea(int m, int n,
+                           vector<int> &hFences,
+                           vector<int> &vFences)
     {
-        constexpr int kMod = 1'000'000'007;
+        const int kMod = 1000000007;
 
         hFences.push_back(1);
         hFences.push_back(m);
         vFences.push_back(1);
         vFences.push_back(n);
 
-        ranges::sort(hFences);
-        ranges::sort(vFences);
+        sort(hFences.begin(), hFences.end());
+        sort(vFences.begin(), vFences.end());
 
-        const unordered_set<int> hGaps = getGaps(hFences);
-        const unordered_set<int> vGaps = getGaps(vFences);
+        unordered_set<int> hGaps = getGaps(hFences);
+        unordered_set<int> vGaps = getGaps(vFences);
+
         int maxGap = -1;
-
-            if (vGaps.contains(hGap))
+        for (int hGap : hGaps)
+        {
+            if (vGaps.find(hGap) != vGaps.end())
                 maxGap = max(maxGap, hGap);
+        }
 
-        return maxGap == -1 ? -1 : static_cast<long>(maxGap) * maxGap % kMod;
+        if (maxGap == -1)
+            return -1;
+
+        long long area = 1LL * maxGap * maxGap;
+        return area % kMod;
     }
 
 private:
     unordered_set<int> getGaps(const vector<int> &fences)
     {
         unordered_set<int> gaps;
-        for (int i = 0; i < fences.size(); ++i)
+        int sz = fences.size();
+        for (int i = 0; i < sz; ++i)
+        {
             for (int j = 0; j < i; ++j)
+            {
                 gaps.insert(fences[i] - fences[j]);
+            }
+        }
         return gaps;
     }
 };
