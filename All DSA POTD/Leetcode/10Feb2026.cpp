@@ -16,7 +16,6 @@ public:
 
             for (int j = i; j < n; ++j)
             {
-                // C++14 replacement for vis.contains(nums[j])
                 if (vis.find(nums[j]) == vis.end())
                 {
                     vis.insert(nums[j]);
