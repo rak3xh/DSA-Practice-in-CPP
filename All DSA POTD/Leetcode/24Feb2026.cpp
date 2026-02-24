@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class Solution
 {
 public:
@@ -10,19 +11,29 @@ public:
             return false;
 
         // used[i] := true if i is a substring of `s`
-        vector<bool> used(n);
+        vector<bool> used(n, false);
 
-        int window = k == 1 ? 0 : stoi(s.substr(0, k - 1), nullptr, 2);
+        int window = 0;
+
+        // Build first k-1 bits
+        for (int i = 0; i < k - 1; ++i)
+        {
+            window = (window << 1) + (s[i] - '0');
+        }
+
         for (int i = k - 1; i < s.length(); ++i)
         {
-            // Include the s[i].
+            // Include s[i]
             window = (window << 1) + (s[i] - '0');
-            // Discard the s[i - k].
-            window &= n - 1;
+
+            // Keep only last k bits
+            window &= (n - 1);
+
             used[window] = true;
         }
 
-        return ranges::all_of(used, [](bool u)
-                              { return u; });
+        // Replace ranges::all_of with std::all_of
+        return all_of(used.begin(), used.end(), [](bool u)
+                      { return u; });
     }
 };
