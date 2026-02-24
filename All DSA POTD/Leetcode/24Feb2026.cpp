@@ -1,39 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Definition for a binary tree node.
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
 class Solution
 {
 public:
-    bool hasAllCodes(string s, int k)
+    int sumRootToLeaf(TreeNode *root)
     {
-        const int n = 1 << k;
-        if (s.length() < n)
-            return false;
+        int ans = 0;
+        dfs(root, 0, ans);
+        return ans;
+    }
 
-        // used[i] := true if i is a substring of `s`
-        vector<bool> used(n, false);
-
-        int window = 0;
-
-        // Build first k-1 bits
-        for (int i = 0; i < k - 1; ++i)
-        {
-            window = (window << 1) + (s[i] - '0');
-        }
-
-        for (int i = k - 1; i < s.length(); ++i)
-        {
-            // Include s[i]
-            window = (window << 1) + (s[i] - '0');
-
-            // Keep only last k bits
-            window &= (n - 1);
-
-            used[window] = true;
-        }
-
-        // Replace ranges::all_of with std::all_of
-        return all_of(used.begin(), used.end(), [](bool u)
-                      { return u; });
+private:
+    void dfs(TreeNode *root, int val, int &ans)
+    {
+        if (root == nullptr)
+            return;
+        val = val * 2 + root->val;
+        if (root->left == nullptr && root->right == nullptr)
+            ans += val;
+        dfs(root->left, val, ans);
+        dfs(root->right, val, ans);
     }
 };
